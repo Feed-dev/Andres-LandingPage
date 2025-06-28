@@ -25,7 +25,7 @@ const featuredFilms = [{
   highlights: ["Al-Jazeera Witness", "Brussels Film Festival Winner", "IDFA Selection"],
   poster: "https://storage.googleapis.com/storage.magicpath.ai/user/282430617021460480/assets/da07a80c-f63d-478a-8678-4682ebba02e4.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=api-storage%40magicpath.iam.gserviceaccount.com%2F20250628%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20250628T114741Z&X-Goog-Expires=3600&X-Goog-SignedHeaders=host&X-Goog-Signature=2b326751fe126c79e89f61da72c3c4d6fd7107d380a6cbc30165ea51e8744f51b43b6a2398f5eb8232622f935f1fbd6feb5c06dbc787a0e156160915ec033c5db82d13070735b01cd4ee45640e2d7a966378a628fbf89b52e445e033c416bb5c38427b3764b40a640a49b6cc3d546a154324dc923b6e72d64af3c85ca7453760cea176421300510eb280c7a77ad9d999075e1f466ad73428a3428b51104a312e1b249c40e99e250b89e3ffcb3c3b90d9b1f5edaa340c60c5a2397844c0403c9232ec9cc5669a0fcce1cfdf6dedadf8ad0e03c4c1e70349d81d9d6e728173777a161a4833fcd8dc933928136bd74deb090dc6c754021087485d1df66a04be57b9",
   trailerUrl: "https://youtube.com/watch?v=example1",
-  mpid: "a042668e-cc5d-4967-80f9-0c0263285c53"
+  mpid: "f8257117-5c24-42be-8144-23ec3f0dec6f"
 }, {
   id: 2,
   title: "El Color Del Camaleon",
@@ -35,7 +35,7 @@ const featuredFilms = [{
   highlights: ["Kinolatino Audience Choice", "VAF Supported", "International Distribution"],
   poster: "https://storage.googleapis.com/storage.magicpath.ai/user/282430617021460480/assets/4343f03b-3444-47dc-8245-140baea8acf4.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=api-storage%40magicpath.iam.gserviceaccount.com%2F20250628%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20250628T114904Z&X-Goog-Expires=3600&X-Goog-SignedHeaders=host&X-Goog-Signature=9dbe1ad920249384cb1ec7e37ad5f378cdd4726bd9b169de83ea2e21e3b1aa4386f5fbb3f69dea2cefdf245765ceba8a2784efccb405409c79c03676bf84d82d222b6ccfa0128794da0dfbc1df18722dbe1254355da4be3de8084a34e4542f707cf4a6d5267b859a99a8779c03464723460d497be98e2a34d8842c42690c7fde6361a69f5516b0e12695df1f5292de9bbdfd3fbc96fe21547f1e4e429f4a95a3531cd175f4ac69b12310794b5c3843d91d691758a04bf8cb4579756741df8bce71d544d9f0df624d3ee4156e8eb4da0e0246f418aefced039cf1ce4b35c04d3dc82a9af489bbd88193ead63ad493e387757ee6475e02dc62a4cce6d2a2c2ca8f",
   trailerUrl: "https://youtube.com/watch?v=example2",
-  mpid: "064bcd14-c775-46c8-a512-e22428be1cd1"
+  mpid: "d315aef4-d176-42ca-9c66-b690fdbe4df9"
 }, {
   id: 3,
   title: "The Pride Liar",
@@ -45,7 +45,7 @@ const featuredFilms = [{
   highlights: ["IDFA Special Mention", "Festival Circuit", "Critical Acclaim"],
   poster: "https://storage.googleapis.com/storage.magicpath.ai/user/282430617021460480/assets/b6da4a1b-89cf-4127-abab-46af7501f8b7.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=api-storage%40magicpath.iam.gserviceaccount.com%2F20250628%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20250628T113851Z&X-Goog-Expires=3600&X-Goog-SignedHeaders=host&X-Goog-Signature=aa3fd3d6fb772501e918983fb5632b18888075ada5f77cb92dc6080039414c942caf09d6b91b8366ed16d5d70da908331a53510b4dea9fdaeaedb0db5e368591b478b58a45114ab9a7a441c713201b62a895cd47331a1f1bcdecbe3ce7a5846224ae68240d2130e5246764ad49b2786fdeeb2a23fb7fc2da85665a31358ad6c0214fc43745fbf4c8a50ca43aa5dc9d684fee235c1427b0efb6df773014c7bcdf6a86658c5896c8f3e748a3bf0c32a3317a2c3ad7b579c4ae0debadf8c20a1503310e7e2eca5ef4aeb29ea1bc358fc6687759f879dd1a349cb73c24c8153ab9bbd704ed683d333c970443dc7de59f11fadbe089e2fc12b121a9e0d626d9fbf28a",
   trailerUrl: "https://youtube.com/watch?v=example3",
-  mpid: "1b995b76-7120-4955-ae94-2b41bc0b3b37"
+  mpid: "d37f6172-beda-4bc1-aca7-3e5a206500ae"
 }, {
   id: 4,
   title: "Between Two Worlds",
@@ -55,7 +55,7 @@ const featuredFilms = [{
   highlights: ["Latin Film Festival Best Director", "Off World Production", "Streaming Release"],
   poster: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&h=600&fit=crop",
   trailerUrl: "https://youtube.com/watch?v=example4",
-  mpid: "078df3c2-d3ef-4a8a-9919-05520f9c2711"
+  mpid: "33b0890e-fb41-4d0c-a59b-170a8f4eebf7"
 }, {
   id: 5,
   title: "Songs of Exile",
@@ -65,7 +65,7 @@ const featuredFilms = [{
   highlights: ["Music Film Festival", "Soundtrack Release", "Cultural Impact Award"],
   poster: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=600&fit=crop",
   trailerUrl: "https://youtube.com/watch?v=example5",
-  mpid: "aef9f337-9057-4074-a632-171b7d782c24"
+  mpid: "1c734b06-5246-47c0-82f0-77d8fe7d1881"
 }, {
   id: 6,
   title: "New Horizons",
@@ -75,7 +75,7 @@ const featuredFilms = [{
   highlights: ["Business Film Award", "Educational Distribution", "Impact Campaign"],
   poster: "https://images.unsplash.com/photo-1542204165-65bf26472b9b?w=400&h=600&fit=crop",
   trailerUrl: "https://youtube.com/watch?v=example6",
-  mpid: "7070fee2-fec2-4344-a007-b037546a1847"
+  mpid: "9cb6f24c-2368-469b-9c88-709a3fd272fb"
 }] as any[];
 export default function FeaturedFilmsCarousel({}: FeaturedFilmsCarouselProps) {
   const [imageErrors, setImageErrors] = useState<Record<number, boolean>>({});
