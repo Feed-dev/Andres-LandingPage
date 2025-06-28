@@ -23,7 +23,7 @@ const featuredFilms = [{
   format: "Documentary",
   logline: "A intimate portrait of Chilean immigrants adapting to life in Belgium, exploring themes of identity and belonging.",
   highlights: ["Al-Jazeera Witness", "Brussels Film Festival Winner", "IDFA Selection"],
-  poster: "https://images.unsplash.com/photo-1489599735734-79b4212bea40?w=400&h=600&fit=crop",
+  poster: "https://storage.googleapis.com/storage.magicpath.ai/user/282430617021460480/assets/da07a80c-f63d-478a-8678-4682ebba02e4.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=api-storage%40magicpath.iam.gserviceaccount.com%2F20250628%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20250628T114741Z&X-Goog-Expires=3600&X-Goog-SignedHeaders=host&X-Goog-Signature=2b326751fe126c79e89f61da72c3c4d6fd7107d380a6cbc30165ea51e8744f51b43b6a2398f5eb8232622f935f1fbd6feb5c06dbc787a0e156160915ec033c5db82d13070735b01cd4ee45640e2d7a966378a628fbf89b52e445e033c416bb5c38427b3764b40a640a49b6cc3d546a154324dc923b6e72d64af3c85ca7453760cea176421300510eb280c7a77ad9d999075e1f466ad73428a3428b51104a312e1b249c40e99e250b89e3ffcb3c3b90d9b1f5edaa340c60c5a2397844c0403c9232ec9cc5669a0fcce1cfdf6dedadf8ad0e03c4c1e70349d81d9d6e728173777a161a4833fcd8dc933928136bd74deb090dc6c754021087485d1df66a04be57b9",
   trailerUrl: "https://youtube.com/watch?v=example1",
   mpid: "a042668e-cc5d-4967-80f9-0c0263285c53"
 }, {
