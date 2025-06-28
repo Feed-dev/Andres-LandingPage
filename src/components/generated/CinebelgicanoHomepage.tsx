@@ -43,46 +43,46 @@ const currentProjects = [{
   title: "New Latin-American Documentary Project",
   description: "Currently in development - exploring contemporary migration stories",
   status: "In Development",
-  mpid: "b19eb098-b9c0-4c78-a8b5-14ad6e45f86b"
+  mpid: "a63923ee-fa70-43ac-8d32-c230b1671a3b"
 }, {
   title: "Kinolatino Festival 2024",
   description: "Co-organizing the annual celebration of Latin American cinema",
   status: "Ongoing",
-  mpid: "84311c4f-c887-4465-a7a0-71b3ea4a7f97"
+  mpid: "d381338f-0037-4bad-8200-5352c0d79170"
 }] as any[];
 const awards = [{
   name: "Best Documentary",
   festival: "Brussels Film Festival",
   year: "2023",
-  mpid: "6d44e537-c621-49cd-93e4-7cca0dfdd100"
+  mpid: "03bad38d-7ba8-4128-bcf4-b8032658c8c3"
 }, {
   name: "Audience Choice",
   festival: "Kinolatino",
   year: "2022",
-  mpid: "7220a495-0727-47e9-b842-1c193d5cf338"
+  mpid: "5ba2e22c-1bcb-4c91-ad14-9fca0ba235a6"
 }, {
   name: "Special Mention",
   festival: "IDFA",
   year: "2021",
-  mpid: "6706cb44-a9b1-4f94-a92e-d44e32fdad58"
+  mpid: "c9613080-9c5e-46d9-9076-f49aa6e5ec27"
 }, {
   name: "Best Director",
   festival: "Latin Film Festival",
   year: "2020",
-  mpid: "52b41d05-b407-4573-85bd-1d049e2f12ad"
+  mpid: "a970f32e-f8c6-4a8e-bf21-6194aa051194"
 }] as any[];
 const partners = [{
   name: "Off World",
   logo: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=200&h=100&fit=crop",
-  mpid: "d7172e7e-b27d-422d-8ed0-c85a91ede0fa"
+  mpid: "344fda70-2b73-4f2e-a79c-50b9f23762cc"
 }, {
   name: "VAF",
   logo: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=200&h=100&fit=crop",
-  mpid: "13588b69-850e-4544-832f-08becf979087"
+  mpid: "77a982e2-ae82-4c81-93ca-9d62b52882b1"
 }, {
   name: "Al-Jazeera Witness",
   logo: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=200&h=100&fit=crop",
-  mpid: "eb6bfe92-b5df-4562-aa90-3525813837d3"
+  mpid: "2849a88e-267b-4fc0-a303-6bce9aac6e7f"
 }] as any[];
 export default function CinebelgicanoHomepage({}: CinebelgicanoHomepageProps) {
   const [bioModalOpen, setBioModalOpen] = useState(false);
@@ -102,11 +102,11 @@ export default function CinebelgicanoHomepage({}: CinebelgicanoHomepageProps) {
       {/* Fixed Logo Header */}
       <header className="fixed top-4 left-4 z-50 bg-black/80 backdrop-blur-sm rounded-xl p-3 shadow-2xl hover:shadow-white/10 transition-all duration-300" data-magicpath-id="1" data-magicpath-path="CinebelgicanoHomepage.tsx">
         <a href="/" aria-label="Cinebelgicano Productions Home">
-          <img src="https://storage.googleapis.com/storage.magicpath.ai/user/282430617021460480/assets/98b10cb1-37f4-4cee-85be-d7485cb3dd15.jpg?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=api-storage%40magicpath.iam.gserviceaccount.com%2F20250628%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20250628T111340Z&X-Goog-Expires=3600&X-Goog-SignedHeaders=host&X-Goog-Signature=52753d14d62024bdd05995c875eef053be36693d8bd0e6656e07e151546bc85f048123145dfe9548e729be3b50a74083a432c258a9f9f859b0c6027e8d435632ab9d0d00143b46805cf5f8bd55aee883c3db2ca1a66767452681e7227b0ee40f8cdbefdb4628dfa6de71411b2338ce5e6a5c30fa5307c3e1e297c82d417ce564e4f7ad48282960f0daf040ec832d7eeaa04fbb478f7813f17071413b4eab95f629c3218a2bb180dc39f45bdd0a3354645076635eb4d6e6dbe50c4e923c6236a1848ccf8366f2ff8ecf89089cf2a415831b7899841de6a986238d3bb4f86c293a7a0f6a4cb7ba6a528b226b6b8aafcdd6ca2e4b56f9d2d12a5acca6583df9f752" alt="Cinebelgicano Productions logo" className="w-12 h-12 object-contain" data-magicpath-id="2" data-magicpath-path="CinebelgicanoHomepage.tsx" style={{
+          <img src="https://storage.googleapis.com/storage.magicpath.ai/user/282430617021460480/assets/98b10cb1-37f4-4cee-85be-d7485cb3dd15.jpg?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=api-storage%40magicpath.iam.gserviceaccount.com%2F20250628%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20250628T111340Z&X-Goog-Expires=3600&X-Goog-SignedHeaders=host&X-Goog-Signature=52753d14d62024bdd05995c875eef053be36693d8bd0e6656e07e151546bc85f048123145dfe9548e729be3b50a74083a432c258a9f9f859b0c6027e8d435632ab9d0d00143b46805cf5f8bd55aee883c3db2ca1a66767452681e7227b0ee40f8cdbefdb4628dfa6de71411b2338ce5e6a5c30fa5307c3e1e297c82d417ce564e4f7ad48282960f0daf040ec832d7eeaa04fbb478f7813f17071413b4eab95f629c3218a2bb180dc39f45bdd0a3354645076635eb4d6e6dbe50c4e923c6236a1848ccf8366f2ff8ecf89089cf2a415831b7899841de6a986238d3bb4f86c293a7a0f6a4cb7ba6a528b226b6b8aafcdd6ca2e4b56f9d2d12a5acca6583df9f752" alt="Cinebelgicano Productions logo" className="w-12 h-12 object-contain" style={{
           width: "200px",
           maxWidth: "200px",
           height: "200px"
-        }} />
+        }} data-magicpath-id="2" data-magicpath-path="CinebelgicanoHomepage.tsx" />
         </a>
       </header>
 
