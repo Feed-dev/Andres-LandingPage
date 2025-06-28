@@ -18,7 +18,7 @@ export interface FeaturedFilmsCarouselProps {
 // Mock data for featured films
 const featuredFilms = [{
   id: 1,
-  title: "Crossing Borders",
+  title: "Dying For Life",
   year: 2023,
   format: "Documentary",
   logline: "A intimate portrait of Chilean immigrants adapting to life in Belgium, exploring themes of identity and belonging.",
