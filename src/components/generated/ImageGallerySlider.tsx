@@ -20,70 +20,70 @@ const galleryImages = [{
   alt: "Director Andrés Lübbert on set during filming",
   caption: "Andrés Lübbert directing on location in Brussels",
   category: "Director Portrait",
-  mpid: "96797a51-65d3-42f5-a5d3-9d5eb2eba2e8"
+  mpid: "f56eea7d-1a8c-46ce-a2d5-5cd785a0ddb4"
 }, {
   id: 2,
   src: "https://images.unsplash.com/photo-1489599735734-79b4212bea40?w=600&h=400&fit=crop",
   alt: "Key art from Crossing Borders documentary",
   caption: "Official poster for 'Crossing Borders' (2023)",
   category: "Film Key Art",
-  mpid: "8ddc4366-7895-4bdd-bde9-419ec38ccb5e"
+  mpid: "6004cea0-c2ce-44c9-a9e9-dacdd3179748"
 }, {
   id: 3,
   src: "https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=600&h=400&fit=crop",
   alt: "Festival screening at Brussels Film Festival",
   caption: "World premiere at Brussels Film Festival",
   category: "Festival Still",
-  mpid: "453f2b6c-89c6-43ba-9a64-f9120f3ac1a5"
+  mpid: "855a1a2c-0f42-4fcc-afb7-a2e29906ace4"
 }, {
   id: 4,
   src: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=600&h=400&fit=crop",
   alt: "Behind the scenes crew setting up equipment",
   caption: "Camera crew preparing for interview sequence",
   category: "On-Set Photo",
-  mpid: "ce0ef6a8-2a35-4755-a830-1241b2703444"
+  mpid: "edd1d90f-47e8-492e-a430-125cd4caef5e"
 }, {
   id: 5,
   src: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop",
   alt: "Musicians performing in Songs of Exile documentary",
   caption: "Recording session for 'Songs of Exile' soundtrack",
   category: "Film Still",
-  mpid: "d9c5cb76-d867-4b7f-a684-7f843179d185"
+  mpid: "4f3a6ad9-9391-43f5-8a40-42da2658e717"
 }, {
   id: 6,
   src: "https://images.unsplash.com/photo-1542204165-65bf26472b9b?w=600&h=400&fit=crop",
   alt: "Award ceremony at IDFA festival",
   caption: "Receiving Special Mention at IDFA 2021",
   category: "Festival Still",
-  mpid: "8d866e32-b323-4c3b-ba39-357be704c44b"
+  mpid: "7854d6ed-f7a5-4752-912b-22e12d5fa92f"
 }, {
   id: 7,
   src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop&sat=-100",
   alt: "Black and white portrait of Andrés Lübbert",
   caption: "Studio portrait for press materials",
   category: "Director Portrait",
-  mpid: "bbc2e814-5468-4a29-91f3-7bfbf139c83c"
+  mpid: "22e68a08-8612-45ac-8c63-319ef6ad0dac"
 }, {
   id: 8,
   src: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=600&h=400&fit=crop",
   alt: "Film equipment and crew during production",
   caption: "Production team setting up for documentary interview",
   category: "On-Set Photo",
-  mpid: "391b498e-d216-49a3-9574-0487b67e21c3"
+  mpid: "df996c38-3a60-4304-9125-d3eabfac0667"
 }, {
   id: 9,
   src: "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=600&h=400&fit=crop",
   alt: "Kinolatino festival venue with audience",
   caption: "Packed screening at Kinolatino Festival 2023",
   category: "Festival Still",
-  mpid: "d5268792-5bc2-4cb7-b64e-529cab252c26"
+  mpid: "8c8c644a-458c-4d1c-ab22-e49f394d421d"
 }, {
   id: 10,
   src: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&h=400&fit=crop",
   alt: "Film poster display at international festival",
   caption: "International festival showcase display",
   category: "Film Key Art",
-  mpid: "e5477ab0-6b8b-4100-bd2b-377069fe0502"
+  mpid: "7c3962c5-6acd-43c3-ac23-393bd7b43424"
 }] as any[];
 export default function ImageGallerySlider({}: ImageGallerySliderProps) {
   const [loadingStates, setLoadingStates] = useState<Record<number, boolean>>(galleryImages.reduce((acc, image) => ({

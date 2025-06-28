@@ -4,7 +4,7 @@ import * as React from "react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Play, Download, Facebook, Linkedin, Youtube, Mail, Award, ExternalLink, ChevronRight, MapPin, Phone, Globe, Film, Camera, Circle } from "lucide-react";
+import { Play, Download, Facebook, Linkedin, Youtube, Mail, Award, ExternalLink, ChevronRight, MapPin, Phone, Globe, Film, Camera, Circle, Star, Calendar, Send, User, Briefcase, Video, Users, CheckCircle, Quote, FileText, Clock, Building } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -14,6 +14,10 @@ import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import FeaturedFilmsCarousel from "./FeaturedFilmsCarousel";
 import VideoGrid from "./VideoGrid";
 import ImageGallerySlider from "./ImageGallerySlider";
@@ -24,12 +28,43 @@ export interface CinebelgicanoHomepageProps {
 // Mock data for the homepage
 const directorData = {
   name: "Andrés Lübbert",
+  title: "Director & Producer",
   tagline: "Award-winning filmmaker bridging Latin American stories with global audiences",
   bio: "Andrés Lübbert is a Chilean-Belgian filmmaker whose work explores themes of identity, migration, and cultural intersection. His documentaries have been featured at international film festivals and broadcast on major networks including Al-Jazeera Witness.",
   fullBio: "Andrés Lübbert is a Chilean-Belgian filmmaker whose work explores themes of identity, migration, and cultural intersection. His documentaries have been featured at international film festivals and broadcast on major networks including Al-Jazeera Witness. Born in Chile and based in Belgium, Lübbert brings a unique perspective to his storytelling, often focusing on the experiences of Latin American communities in Europe. His films have received critical acclaim for their intimate portrayal of personal stories within larger social contexts. As co-organizer of the Kinolatino festival, he continues to champion Latin American cinema and foster cultural exchange through film.",
   image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1000&fit=crop&crop=face",
-  quickFacts: ["Chilean-Belgian filmmaker", "Al-Jazeera Witness contributor", "Kinolatino festival co-organizer", "Award-winning documentarian"]
+  credentials: ["15+ Years Experience", "Al-Jazeera Witness Contributor", "Kinolatino Festival Co-Organizer", "Award-Winning Documentarian", "International Distribution"],
+  contact: {
+    email: "andres@cinebelgicano.com",
+    phone: "+32 2 123 4567",
+    location: "Brussels, Belgium"
+  }
 };
+const services = [{
+  title: "Documentary Production",
+  description: "Full-service documentary filmmaking from concept to distribution",
+  features: ["Pre-production planning", "Location scouting", "Interview coordination", "Post-production"],
+  icon: Video,
+  mpid: "bef9ed91-0465-487e-a4af-f80654974fd5"
+}, {
+  title: "Equipment & Crew",
+  description: "Professional-grade equipment and experienced crew for hire",
+  features: ["4K cameras", "Audio equipment", "Lighting packages", "Experienced operators"],
+  icon: Camera,
+  mpid: "3be33242-135c-4cef-b10c-f7094fda622f"
+}, {
+  title: "Co-Production",
+  description: "International co-production partnerships and funding assistance",
+  features: ["Funding applications", "International partnerships", "Distribution networks", "Festival strategy"],
+  icon: Users,
+  mpid: "a18b5e3c-a1c4-4af8-a3d0-3c119f2a88e5"
+}, {
+  title: "Consultation",
+  description: "Creative and business consultation for film projects",
+  features: ["Script development", "Production planning", "Distribution strategy", "Festival submissions"],
+  icon: Briefcase,
+  mpid: "67efec67-9847-408d-8c0f-3ba14a9ba948"
+}] as any[];
 const productionCompany = {
   name: "Cinebelgicano Productions",
   description: "Independent production company specializing in cross-cultural documentaries and narrative films that bridge Latin American stories with European perspectives.",
@@ -43,414 +78,640 @@ const currentProjects = [{
   title: "New Latin-American Documentary Project",
   description: "Currently in development - exploring contemporary migration stories",
   status: "In Development",
-  mpid: "47f8d526-de1c-4888-a067-a1c33ed22981"
+  timeline: "2024-2025",
+  budget: "€150,000",
+  mpid: "23125be9-8b7c-4190-863e-a029a4b80205"
 }, {
   title: "Kinolatino Festival 2024",
   description: "Co-organizing the annual celebration of Latin American cinema",
   status: "Ongoing",
-  mpid: "786306c7-66aa-492a-bc30-5ae6a335186a"
+  timeline: "Year-round",
+  budget: "€75,000",
+  mpid: "7afc34d4-838f-4ad6-90cf-edf4e589b9b9"
 }] as any[];
-const awards = [{
-  name: "Best Documentary",
-  festival: "Brussels Film Festival",
-  year: "2023",
-  mpid: "cd0e1ddb-04db-426b-857a-417553b03342"
+const credentials = [{
+  category: "Awards & Recognition",
+  items: [{
+    name: "Best Documentary",
+    project: "Dying For Life",
+    festival: "Brussels Film Festival",
+    year: "2023",
+    significance: "Major European festival recognition",
+    mpid: "7c4fb06f-6c08-48cc-a05d-a1b782b170b3"
+  }, {
+    name: "Audience Choice",
+    project: "El Color Del Camaleon",
+    festival: "Kinolatino",
+    year: "2022",
+    significance: "Community impact and engagement",
+    mpid: "56a324db-36b4-432e-8808-f8c56ae6d932"
+  }, {
+    name: "Special Mention",
+    project: "The Pride Liar",
+    festival: "IDFA",
+    year: "2021",
+    significance: "International documentary recognition",
+    mpid: "214c09a6-7762-4f9b-a09e-5823784dd5cd"
+  }],
+  mpid: "90500229-e0b7-4151-82a4-ce1eaab04d87"
 }, {
-  name: "Audience Choice",
-  festival: "Kinolatino",
-  year: "2022",
-  mpid: "e0fac522-8034-44d8-b04e-bf4b32853524"
-}, {
-  name: "Special Mention",
-  festival: "IDFA",
-  year: "2021",
-  mpid: "83c7c992-c254-429f-8a65-014b9ad259d6"
-}, {
-  name: "Best Director",
-  festival: "Latin Film Festival",
-  year: "2020",
-  mpid: "5e777a64-220b-4ad8-aeb5-8f3bc5358f27"
+  category: "Industry Partnerships",
+  items: [{
+    name: "Al-Jazeera Witness",
+    type: "Broadcasting Partner",
+    description: "Regular contributor for documentary content",
+    duration: "2020-Present",
+    mpid: "d6bee28d-9617-4acd-bd1d-4fef5d6c5461"
+  }, {
+    name: "VAF (Flanders Audiovisual Fund)",
+    type: "Funding Partner",
+    description: "Supported projects and development funding",
+    duration: "2019-Present",
+    mpid: "14a1fdab-98bf-4aed-b1c6-237cff8f62ab"
+  }, {
+    name: "Off World Productions",
+    type: "Co-Production Partner",
+    description: "International co-production collaborations",
+    duration: "2018-Present",
+    mpid: "4408161f-a7a4-41e4-a2b7-6da1a412bff9"
+  }],
+  mpid: "40c6f2e6-12a0-4fd5-a6a8-b1edf6ff16ff"
 }] as any[];
-const partners = [{
-  name: "Off World",
-  logo: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=200&h=100&fit=crop",
-  mpid: "132a2000-221d-4257-a9ab-24f9ee515478"
+const testimonials = [{
+  quote: "Andrés brings a unique perspective to documentary filmmaking that resonates with international audiences while maintaining authentic cultural narratives.",
+  author: "Maria Rodriguez",
+  title: "Festival Director, Kinolatino",
+  image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face",
+  mpid: "c1316954-9ebf-4373-bde1-a89c1be34dc7"
 }, {
-  name: "VAF",
-  logo: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=200&h=100&fit=crop",
-  mpid: "870e2128-464c-4c78-bfd7-e2c12fb5882f"
+  quote: "Working with Cinebelgicano Productions has been exceptional. Their attention to detail and cultural sensitivity makes them ideal partners for international projects.",
+  author: "Jean-Pierre Dubois",
+  title: "Producer, Off World Productions",
+  image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
+  mpid: "9bd3f4b8-b9b3-41f4-98df-0d7fb2bacf60"
 }, {
-  name: "Al-Jazeera Witness",
-  logo: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=200&h=100&fit=crop",
-  mpid: "4f49fb1a-deab-4e6e-85ff-f5b2e3ef0e1b"
+  quote: "The quality and authenticity of Andrés' work consistently meets our editorial standards for international documentary programming.",
+  author: "Sarah Ahmed",
+  title: "Commissioning Editor, Al-Jazeera Witness",
+  image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+  mpid: "25427f82-9b6a-4613-81be-6228322aa8e0"
+}] as any[];
+const portfolioMaterials = [{
+  title: "Complete Portfolio & Reel",
+  description: "Comprehensive showcase of recent work and capabilities",
+  format: "PDF + Video",
+  size: "25MB",
+  mpid: "9f12519b-949f-4554-b246-ae5d14592945"
+}, {
+  title: "Production Capabilities Deck",
+  description: "Detailed overview of services, equipment, and crew",
+  format: "PDF",
+  size: "8MB",
+  mpid: "89d903e9-815d-4551-90ed-3bc91e19af28"
+}, {
+  title: "Festival & Awards Documentation",
+  description: "Complete list of selections, awards, and press coverage",
+  format: "PDF",
+  size: "12MB",
+  mpid: "c397f91f-b055-47c3-b0b6-8f0847073fb6"
 }] as any[];
 export default function CinebelgicanoHomepage({}: CinebelgicanoHomepageProps) {
   const [bioModalOpen, setBioModalOpen] = useState(false);
-  const [imageError, setImageError] = useState(false);
-  const handleDownloadPressKit = () => {
-    // In a real app, this would trigger a PDF download
-    console.log("Downloading press kit...");
+  const [contactFormData, setContactFormData] = useState({
+    name: "",
+    email: "",
+    company: "",
+    projectType: "",
+    message: "",
+    timeline: ""
+  });
+  const handleDownloadMaterial = (material: any) => {
+    console.log(`Downloading ${material.title}...`);
   };
-  const handleWatchTrailer = () => {
-    // In a real app, this would open a video modal or navigate to trailer
-    console.log("Opening trailer...");
+  const handleContactSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Contact form submitted:", contactFormData);
+    // Reset form
+    setContactFormData({
+      name: "",
+      email: "",
+      company: "",
+      projectType: "",
+      message: "",
+      timeline: ""
+    });
   };
-
-  // Cinebelgicano logo URL (using the provided logo)
-  const logoUrl = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjMDAwIi8+CjxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iODAiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSI0IiBmaWxsPSJub25lIi8+CjxyZWN0IHg9IjcwIiB5PSI3MCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjYwIiBmaWxsPSIjZmZmIi8+CjxyZWN0IHg9Ijg1IiB5PSI4NSIgd2lkdGg9IjMwIiBoZWlnaHQ9IjMwIiBmaWxsPSIjMDAwIi8+CjxjaXJjbGUgY3g9IjEwMCIgY3k9IjEwMCIgcj0iMTAiIGZpbGw9IiNmZmYiLz4KPHRleHQgeD0iMTAwIiB5PSIxNzAiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkNJTkVCRUxHSUNBTk88L3RleHQ+Cjx0ZXh0IHg9IjEwMCIgeT0iMTg1IiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlBST0RVQ1RJT05TPC90ZXh0Pgo8L3N2Zz4K";
-  return <div className="min-h-screen bg-black text-white font-sans relative" data-magicpath-id="0" data-magicpath-path="CinebelgicanoHomepage.tsx">
-      {/* Fixed Logo Header */}
-      <header className="fixed top-4 left-4 z-50 bg-black/80 backdrop-blur-sm rounded-xl p-3 shadow-2xl hover:shadow-white/10 transition-all duration-300" data-magicpath-id="1" data-magicpath-path="CinebelgicanoHomepage.tsx">
-        <a href="/" aria-label="Cinebelgicano Productions Home">
-          <img src="https://storage.googleapis.com/storage.magicpath.ai/user/282430617021460480/assets/98b10cb1-37f4-4cee-85be-d7485cb3dd15.jpg?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=api-storage%40magicpath.iam.gserviceaccount.com%2F20250628%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20250628T111340Z&X-Goog-Expires=3600&X-Goog-SignedHeaders=host&X-Goog-Signature=52753d14d62024bdd05995c875eef053be36693d8bd0e6656e07e151546bc85f048123145dfe9548e729be3b50a74083a432c258a9f9f859b0c6027e8d435632ab9d0d00143b46805cf5f8bd55aee883c3db2ca1a66767452681e7227b0ee40f8cdbefdb4628dfa6de71411b2338ce5e6a5c30fa5307c3e1e297c82d417ce564e4f7ad48282960f0daf040ec832d7eeaa04fbb478f7813f17071413b4eab95f629c3218a2bb180dc39f45bdd0a3354645076635eb4d6e6dbe50c4e923c6236a1848ccf8366f2ff8ecf89089cf2a415831b7899841de6a986238d3bb4f86c293a7a0f6a4cb7ba6a528b226b6b8aafcdd6ca2e4b56f9d2d12a5acca6583df9f752" alt="Cinebelgicano Productions logo" className="w-12 h-12 object-contain" style={{
-          width: "200px",
-          maxWidth: "200px",
-          height: "200px"
-        }} data-magicpath-id="2" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-        </a>
-      </header>
-
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden" data-magicpath-id="3" data-magicpath-path="CinebelgicanoHomepage.tsx">
-        {/* Stylized Background Pattern */}
-        <div className="absolute inset-0 z-0" aria-hidden="true" data-magicpath-id="4" data-magicpath-path="CinebelgicanoHomepage.tsx">
-          <div className="absolute inset-0 bg-black" data-magicpath-id="5" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-          {/* Geometric patterns inspired by logo */}
-          <div className="absolute inset-0 opacity-10" data-magicpath-id="6" data-magicpath-path="CinebelgicanoHomepage.tsx">
-            <div className="absolute top-1/4 left-1/4 w-32 h-32 border-4 border-white rounded-full" data-magicpath-id="7" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-            <div className="absolute top-1/3 right-1/4 w-24 h-24 border-2 border-white" data-magicpath-id="8" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-            <div className="absolute bottom-1/4 left-1/3 w-16 h-16 bg-white rounded-full" data-magicpath-id="9" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-            <div className="absolute bottom-1/3 right-1/3 w-20 h-20 border-2 border-white rotate-45" data-magicpath-id="10" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-          </div>
-          {/* Film reel pattern */}
-          <div className="absolute inset-0 opacity-5" style={{
-          backgroundImage: `repeating-radial-gradient(circle at 20% 40%, white 0 2px, transparent 2px 40px),
-                             repeating-radial-gradient(circle at 80% 60%, white 0 2px, transparent 2px 40px)`
-        }} data-magicpath-id="11" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-        </div>
-        
-        <motion.div initial={{
-        opacity: 0,
-        y: 50
-      }} animate={{
-        opacity: 1,
-        y: 0
-      }} transition={{
-        duration: 0.8
-      }} className="relative z-10 text-center max-w-4xl mx-auto px-4" data-magicpath-id="12" data-magicpath-path="CinebelgicanoHomepage.tsx">
-          <h1 className="text-5xl md:text-7xl font-black mb-6 tracking-tight uppercase" style={{
-          fontFamily: 'Inter, Roboto, Arial, Helvetica, sans-serif'
-        }} data-magicpath-id="13" data-magicpath-path="CinebelgicanoHomepage.tsx">
-            {directorData.name}
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 font-light" style={{
-          fontFamily: 'Inter, Roboto, Arial, Helvetica, sans-serif'
-        }} data-magicpath-id="14" data-magicpath-path="CinebelgicanoHomepage.tsx">
-            {directorData.tagline}
-          </p>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 text-sm" data-magicpath-id="15" data-magicpath-path="CinebelgicanoHomepage.tsx">
-            {directorData.quickFacts.map((fact, index) => <div key={index} className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20" data-magicpath-id="16" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                <span className="font-semibold" data-magicpath-id="17" data-magicpath-path="CinebelgicanoHomepage.tsx">{fact}</span>
-              </div>)}
-          </div>
-          
-          <Button size="lg" className="bg-white text-black font-bold uppercase tracking-widest px-8 py-3 rounded-lg shadow-lg hover:bg-black hover:text-white border-2 border-white transition-all duration-300" onClick={handleWatchTrailer} style={{
-          fontFamily: 'Inter, Roboto, Arial, Helvetica, sans-serif'
-        }} data-magicpath-id="18" data-magicpath-path="CinebelgicanoHomepage.tsx">
-            <Play className="mr-2 h-5 w-5" data-magicpath-id="19" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-            Watch Trailer
-          </Button>
-        </motion.div>
-      </section>
-
-      {/* Film Strip Separator */}
-      <div className="w-full h-8 bg-gradient-to-r from-transparent via-white to-transparent opacity-10" style={{
-      backgroundImage: 'repeating-linear-gradient(90deg, white 0 4px, transparent 4px 24px)'
-    }} aria-hidden="true" data-magicpath-id="20" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-
-      <main className="max-w-7xl mx-auto px-4 py-16 space-y-16" data-magicpath-id="21" data-magicpath-path="CinebelgicanoHomepage.tsx">
-        {/* About Andrés Section */}
-        <section className="grid md:grid-cols-2 gap-12 items-center" data-magicpath-id="22" data-magicpath-path="CinebelgicanoHomepage.tsx">
-          <div data-magicpath-id="23" data-magicpath-path="CinebelgicanoHomepage.tsx">
-            <h2 className="text-3xl font-black mb-6 uppercase tracking-wide" style={{
-            fontFamily: 'Inter, Roboto, Arial, Helvetica, sans-serif'
-          }} data-magicpath-id="24" data-magicpath-path="CinebelgicanoHomepage.tsx">About Andrés</h2>
-            <p className="text-gray-300 mb-6 leading-relaxed" data-magicpath-id="25" data-magicpath-path="CinebelgicanoHomepage.tsx">{directorData.bio}</p>
-            
-            <div className="flex flex-col sm:flex-row gap-4" data-magicpath-id="26" data-magicpath-path="CinebelgicanoHomepage.tsx">
-              <Button onClick={handleDownloadPressKit} variant="outline" className="border-white text-white hover:bg-white hover:text-black font-bold uppercase tracking-wide" data-magicpath-id="27" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                <Download className="mr-2 h-4 w-4" data-magicpath-id="28" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-                Download Press Kit (PDF)
-              </Button>
-              
-              <Dialog open={bioModalOpen} onOpenChange={setBioModalOpen} data-magicpath-id="29" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                <DialogTrigger asChild data-magicpath-id="30" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                  <Button variant="ghost" className="text-white hover:bg-white/10 font-bold uppercase tracking-wide" data-magicpath-id="31" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                    Read More
-                    <ChevronRight className="ml-2 h-4 w-4" data-magicpath-id="32" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="max-w-2xl bg-black border-white text-white" data-magicpath-id="33" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                  <DialogHeader data-magicpath-id="34" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                    <DialogTitle className="font-black uppercase" style={{
-                    fontFamily: 'Inter, Roboto, Arial, Helvetica, sans-serif'
-                  }} data-magicpath-id="35" data-magicpath-path="CinebelgicanoHomepage.tsx">About {directorData.name}</DialogTitle>
-                  </DialogHeader>
-                  <div className="space-y-4" data-magicpath-id="36" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                    <Avatar className="w-24 h-24 mx-auto border-2 border-white" data-magicpath-id="37" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                      <AvatarImage src={directorData.image} alt={directorData.name} data-magicpath-id="38" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-                      <AvatarFallback className="bg-white text-black font-bold" data-magicpath-id="39" data-magicpath-path="CinebelgicanoHomepage.tsx">{directorData.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                    </Avatar>
-                    <p className="text-gray-300 leading-relaxed" data-magicpath-id="40" data-magicpath-path="CinebelgicanoHomepage.tsx">{directorData.fullBio}</p>
-                  </div>
-                </DialogContent>
-              </Dialog>
+  const handleBookingCalendar = () => {
+    console.log("Opening calendar booking...");
+  };
+  return <div className="min-h-screen bg-white text-gray-900 font-sans relative" data-magicpath-id="0" data-magicpath-path="CinebelgicanoHomepage.tsx">
+      {/* Fixed Professional Header */}
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm" data-magicpath-id="1" data-magicpath-path="CinebelgicanoHomepage.tsx">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between" data-magicpath-id="2" data-magicpath-path="CinebelgicanoHomepage.tsx">
+          <div className="flex items-center gap-3" data-magicpath-id="3" data-magicpath-path="CinebelgicanoHomepage.tsx">
+            <img src="https://storage.googleapis.com/storage.magicpath.ai/user/282430617021460480/assets/98b10cb1-37f4-4cee-85be-d7485cb3dd15.jpg?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=api-storage%40magicpath.iam.gserviceaccount.com%2F20250628%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20250628T111340Z&X-Goog-Expires=3600&X-Goog-SignedHeaders=host&X-Goog-Signature=52753d14d62024bdd05995c875eef053be36693d8bd0e6656e07e151546bc85f048123145dfe9548e729be3b50a74083a432c258a9f9f859b0c6027e8d435632ab9d0d00143b46805cf5f8bd55aee883c3db2ca1a66767452681e7227b0ee40f8cdbefdb4628dfa6de71411b2338ce5e6a5c30fa5307c3e1e297c82d417ce564e4f7ad48282960f0daf040ec832d7eeaa04fbb478f7813f17071413b4eab95f629c3218a2bb180dc39f45bdd0a3354645076635eb4d6e6dbe50c4e923c6236a1848ccf8366f2ff8ecf89089cf2a415831b7899841de6a986238d3bb4f86c293a7a0f6a4cb7ba6a528b226b6b8aafcdd6ca2e4b56f9d2d12a5acca6583df9f752" alt="Cinebelgicano Productions logo" className="w-10 h-10 object-contain" data-magicpath-id="4" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+            <div data-magicpath-id="5" data-magicpath-path="CinebelgicanoHomepage.tsx">
+              <h1 className="text-lg font-bold text-gray-900" data-magicpath-id="6" data-magicpath-path="CinebelgicanoHomepage.tsx">{productionCompany.name}</h1>
+              <p className="text-xs text-gray-600" data-magicpath-id="7" data-magicpath-path="CinebelgicanoHomepage.tsx">Professional Film Production</p>
             </div>
           </div>
-          
-          <div className="relative" data-magicpath-id="41" data-magicpath-path="CinebelgicanoHomepage.tsx">
-            <Card className="p-6 bg-gray-900 border-white/20" data-magicpath-id="42" data-magicpath-path="CinebelgicanoHomepage.tsx">
-              <CardHeader data-magicpath-id="43" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                <CardTitle className="flex items-center gap-2 text-white font-black uppercase" style={{
-                fontFamily: 'Inter, Roboto, Arial, Helvetica, sans-serif'
-              }} data-magicpath-id="44" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                  <Avatar className="w-12 h-12 border-2 border-white" data-magicpath-id="45" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                    <AvatarImage src={directorData.image} alt={directorData.name} data-magicpath-id="46" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-                    <AvatarFallback className="bg-white text-black font-bold" data-magicpath-id="47" data-magicpath-path="CinebelgicanoHomepage.tsx">{directorData.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                  </Avatar>
-                  {directorData.name}
-                </CardTitle>
-              </CardHeader>
-              <CardContent data-magicpath-id="48" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                <div className="space-y-2" data-magicpath-id="49" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                  {directorData.quickFacts.map((fact, index) => <Badge key={index} variant="secondary" className="mr-2 mb-2 bg-white text-black font-semibold" data-magicpath-id="50" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                      {fact}
-                    </Badge>)}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </section>
-
-        {/* Camera Gear Separator */}
-        <div className="flex justify-center items-center py-8" aria-hidden="true" data-magicpath-id="51" data-magicpath-path="CinebelgicanoHomepage.tsx">
-          <Camera className="h-8 w-8 text-white/20 mx-4" />
-          <div className="w-32 h-px bg-white/20" data-magicpath-id="52" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-          <Film className="h-8 w-8 text-white/20 mx-4" data-magicpath-id="53" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-          <div className="w-32 h-px bg-white/20" data-magicpath-id="54" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-          <Circle className="h-8 w-8 text-white/20 mx-4" />
+          <nav className="hidden md:flex items-center gap-6" data-magicpath-id="8" data-magicpath-path="CinebelgicanoHomepage.tsx">
+            <a href="#portfolio" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">Portfolio</a>
+            <a href="#services" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">Services</a>
+            <a href="#credentials" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">Credentials</a>
+            <a href="#contact" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">Contact</a>
+            <Button size="sm" onClick={handleBookingCalendar} data-magicpath-id="9" data-magicpath-path="CinebelgicanoHomepage.tsx">
+              <Calendar className="mr-2 h-4 w-4" data-magicpath-id="10" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+              Book Meeting
+            </Button>
+          </nav>
         </div>
+      </header>
 
-        {/* Cinebelgicano Productions Section */}
-        <section className="text-center" data-magicpath-id="55" data-magicpath-path="CinebelgicanoHomepage.tsx">
-          <h2 className="text-3xl font-black mb-6 uppercase tracking-wide" style={{
-          fontFamily: 'Inter, Roboto, Arial, Helvetica, sans-serif'
-        }} data-magicpath-id="56" data-magicpath-path="CinebelgicanoHomepage.tsx">{productionCompany.name}</h2>
-          <p className="text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed" data-magicpath-id="57" data-magicpath-path="CinebelgicanoHomepage.tsx">
-            {productionCompany.description}
-          </p>
-          
-          <div className="flex justify-center gap-6" data-magicpath-id="58" data-magicpath-path="CinebelgicanoHomepage.tsx">
-            <TooltipProvider data-magicpath-id="59" data-magicpath-path="CinebelgicanoHomepage.tsx">
-              <Tooltip data-magicpath-id="60" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                <TooltipTrigger asChild data-magicpath-id="61" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                  <Button variant="outline" size="icon" asChild className="border-white text-white hover:bg-white hover:text-black" data-magicpath-id="62" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                    <a href={productionCompany.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                      <Facebook className="h-5 w-5" data-magicpath-id="63" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-                    </a>
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent className="bg-white text-black" data-magicpath-id="64" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                  <p data-magicpath-id="65" data-magicpath-path="CinebelgicanoHomepage.tsx">Follow on Facebook</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-            
-            <TooltipProvider data-magicpath-id="66" data-magicpath-path="CinebelgicanoHomepage.tsx">
-              <Tooltip data-magicpath-id="67" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                <TooltipTrigger asChild data-magicpath-id="68" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                  <Button variant="outline" size="icon" asChild className="border-white text-white hover:bg-white hover:text-black" data-magicpath-id="69" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                    <a href={productionCompany.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                      <Linkedin className="h-5 w-5" data-magicpath-id="70" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-                    </a>
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent className="bg-white text-black" data-magicpath-id="71" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                  <p data-magicpath-id="72" data-magicpath-path="CinebelgicanoHomepage.tsx">Connect on LinkedIn</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-            
-            <TooltipProvider data-magicpath-id="73" data-magicpath-path="CinebelgicanoHomepage.tsx">
-              <Tooltip data-magicpath-id="74" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                <TooltipTrigger asChild data-magicpath-id="75" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                  <Button variant="outline" size="icon" asChild className="border-white text-white hover:bg-white hover:text-black" data-magicpath-id="76" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                    <a href={productionCompany.social.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                      <Youtube className="h-5 w-5" data-magicpath-id="77" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-                    </a>
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent className="bg-white text-black" data-magicpath-id="78" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                  <p data-magicpath-id="79" data-magicpath-path="CinebelgicanoHomepage.tsx">Watch on YouTube</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          </div>
-        </section>
+      {/* Hero Section - Split Screen */}
+      <section className="pt-20 min-h-screen flex items-center" data-magicpath-id="11" data-magicpath-path="CinebelgicanoHomepage.tsx">
+        <div className="max-w-7xl mx-auto px-4 py-16" data-magicpath-id="12" data-magicpath-path="CinebelgicanoHomepage.tsx">
+          <div className="grid lg:grid-cols-2 gap-12 items-center" data-magicpath-id="13" data-magicpath-path="CinebelgicanoHomepage.tsx">
+            {/* Director Portrait */}
+            <motion.div initial={{
+            opacity: 0,
+            x: -50
+          }} animate={{
+            opacity: 1,
+            x: 0
+          }} transition={{
+            duration: 0.8
+          }} className="relative" data-magicpath-id="14" data-magicpath-path="CinebelgicanoHomepage.tsx">
+              <div className="relative" data-magicpath-id="15" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                <img src={directorData.image} alt={`Professional portrait of ${directorData.name}`} className="w-full max-w-md mx-auto rounded-2xl shadow-2xl object-cover aspect-[3/4]" data-magicpath-id="16" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                <div className="absolute -bottom-6 -right-6 bg-white rounded-xl p-4 shadow-lg border" data-magicpath-id="17" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                  <div className="flex items-center gap-2" data-magicpath-id="18" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                    <Award className="h-5 w-5 text-yellow-600" data-magicpath-id="19" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                    <span className="text-sm font-semibold text-gray-900" data-magicpath-id="20" data-magicpath-path="CinebelgicanoHomepage.tsx">Award Winner</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
 
-        {/* Featured Films Carousel */}
-        <section data-magicpath-id="80" data-magicpath-path="CinebelgicanoHomepage.tsx">
-          <h2 className="text-3xl font-black mb-8 text-center uppercase tracking-wide" style={{
-          fontFamily: 'Inter, Roboto, Arial, Helvetica, sans-serif'
-        }} data-magicpath-id="81" data-magicpath-path="CinebelgicanoHomepage.tsx">Featured Films</h2>
-          <FeaturedFilmsCarousel data-magicpath-id="82" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-        </section>
+            {/* Professional Credentials & Contact */}
+            <motion.div initial={{
+            opacity: 0,
+            x: 50
+          }} animate={{
+            opacity: 1,
+            x: 0
+          }} transition={{
+            duration: 0.8,
+            delay: 0.2
+          }} className="space-y-8" data-magicpath-id="21" data-magicpath-path="CinebelgicanoHomepage.tsx">
+              <div data-magicpath-id="22" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-2" data-magicpath-id="23" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                  {directorData.name}
+                </h1>
+                <h2 className="text-xl text-gray-600 mb-4" data-magicpath-id="24" data-magicpath-path="CinebelgicanoHomepage.tsx">{directorData.title}</h2>
+                <p className="text-lg text-gray-700 leading-relaxed mb-6" data-magicpath-id="25" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                  {directorData.tagline}
+                </p>
+              </div>
 
-        {/* Current Projects & Festival Work */}
-        <section className="bg-gray-900/50 rounded-lg p-8 border border-white/10" data-magicpath-id="83" data-magicpath-path="CinebelgicanoHomepage.tsx">
-          <h2 className="text-3xl font-black mb-8 text-center uppercase tracking-wide" style={{
-          fontFamily: 'Inter, Roboto, Arial, Helvetica, sans-serif'
-        }} data-magicpath-id="84" data-magicpath-path="CinebelgicanoHomepage.tsx">Current Projects & Festival Work</h2>
-          <div className="grid md:grid-cols-2 gap-6" data-magicpath-id="85" data-magicpath-path="CinebelgicanoHomepage.tsx">
-            {currentProjects.map((project, index) => <Card key={index} className="bg-black border-white/20" data-magicpath-id="86" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                <CardHeader data-magicpath-id="87" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                  <CardTitle className="flex items-center justify-between text-white font-black uppercase" style={{
-                fontFamily: 'Inter, Roboto, Arial, Helvetica, sans-serif'
-              }} data-magicpath-uuid={(project as any)["mpid"] ?? "unsafe"} data-magicpath-field="title:unknown" data-magicpath-id="88" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                    {project.title}
-                    <Badge variant="outline" className="border-white text-white" data-magicpath-uuid={(project as any)["mpid"] ?? "unsafe"} data-magicpath-field="status:unknown" data-magicpath-id="89" data-magicpath-path="CinebelgicanoHomepage.tsx">{project.status}</Badge>
+              {/* Credentials Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4" data-magicpath-id="26" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                {directorData.credentials.map((credential, index) => <div key={index} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg" data-magicpath-id="27" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                    <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" data-magicpath-id="28" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                    <span className="text-sm font-medium text-gray-900" data-magicpath-id="29" data-magicpath-path="CinebelgicanoHomepage.tsx">{credential}</span>
+                  </div>)}
+              </div>
+
+              {/* Contact Information */}
+              <Card className="border-2 border-gray-200" data-magicpath-id="30" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                <CardHeader data-magicpath-id="31" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                  <CardTitle className="flex items-center gap-2" data-magicpath-id="32" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                    <User className="h-5 w-5" data-magicpath-id="33" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                    Professional Contact
                   </CardTitle>
                 </CardHeader>
-                <CardContent data-magicpath-id="90" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                  <p className="text-gray-300" data-magicpath-uuid={(project as any)["mpid"] ?? "unsafe"} data-magicpath-field="description:unknown" data-magicpath-id="91" data-magicpath-path="CinebelgicanoHomepage.tsx">{project.description}</p>
+                <CardContent className="space-y-3" data-magicpath-id="34" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                  <div className="flex items-center gap-3" data-magicpath-id="35" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                    <Mail className="h-4 w-4 text-gray-600" data-magicpath-id="36" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                    <a href={`mailto:${directorData.contact.email}`} className="text-blue-600 hover:underline">
+                      {directorData.contact.email}
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-3" data-magicpath-id="37" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                    <Phone className="h-4 w-4 text-gray-600" data-magicpath-id="38" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                    <a href={`tel:${directorData.contact.phone}`} className="text-blue-600 hover:underline">
+                      {directorData.contact.phone}
+                    </a>
+                  </div>
+                  <div className="flex items-center gap-3" data-magicpath-id="39" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                    <MapPin className="h-4 w-4 text-gray-600" data-magicpath-id="40" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                    <span className="text-gray-700" data-magicpath-id="41" data-magicpath-path="CinebelgicanoHomepage.tsx">{directorData.contact.location}</span>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Action Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4" data-magicpath-id="42" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                <Button size="lg" className="flex-1" onClick={handleBookingCalendar} data-magicpath-id="43" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                  <Calendar className="mr-2 h-5 w-5" data-magicpath-id="44" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                  Schedule Consultation
+                </Button>
+                <Button size="lg" variant="outline" className="flex-1" data-magicpath-id="45" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                  <Download className="mr-2 h-5 w-5" data-magicpath-id="46" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                  Download Portfolio
+                </Button>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-20 bg-gray-50" data-magicpath-id="47" data-magicpath-path="CinebelgicanoHomepage.tsx">
+        <div className="max-w-7xl mx-auto px-4" data-magicpath-id="48" data-magicpath-path="CinebelgicanoHomepage.tsx">
+          <div className="text-center mb-16" data-magicpath-id="49" data-magicpath-path="CinebelgicanoHomepage.tsx">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4" data-magicpath-id="50" data-magicpath-path="CinebelgicanoHomepage.tsx">Professional Services</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto" data-magicpath-id="51" data-magicpath-path="CinebelgicanoHomepage.tsx">
+              Comprehensive film production services for documentaries, narratives, and commercial projects
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8" data-magicpath-id="52" data-magicpath-path="CinebelgicanoHomepage.tsx">
+            {services.map((service, index) => <motion.div key={service.mpid} initial={{
+            opacity: 0,
+            y: 50
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.5,
+            delay: index * 0.1
+          }} data-magicpath-id="53" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                <Card className="h-full hover:shadow-lg transition-shadow" data-magicpath-id="54" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                  <CardHeader data-magicpath-id="55" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                    <div className="flex items-center gap-3 mb-3" data-magicpath-id="56" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                      <div className="p-2 bg-blue-100 rounded-lg" data-magicpath-id="57" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                        <service.icon className="h-6 w-6 text-blue-600" data-magicpath-id="58" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                      </div>
+                      <CardTitle className="text-lg" data-magicpath-uuid={(service as any)["mpid"] ?? "unsafe"} data-magicpath-field="title:unknown" data-magicpath-id="59" data-magicpath-path="CinebelgicanoHomepage.tsx">{service.title}</CardTitle>
+                    </div>
+                    <p className="text-gray-600" data-magicpath-uuid={(service as any)["mpid"] ?? "unsafe"} data-magicpath-field="description:unknown" data-magicpath-id="60" data-magicpath-path="CinebelgicanoHomepage.tsx">{service.description}</p>
+                  </CardHeader>
+                  <CardContent data-magicpath-id="61" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                    <ul className="space-y-2" data-magicpath-id="62" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                      {service.features.map((feature: string, idx: number) => <li key={idx} className="flex items-center gap-2 text-sm" data-magicpath-id="63" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                          <CheckCircle className="h-4 w-4 text-green-600" data-magicpath-id="64" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                          <span data-magicpath-id="65" data-magicpath-path="CinebelgicanoHomepage.tsx">{feature}</span>
+                        </li>)}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </motion.div>)}
+          </div>
+        </div>
+      </section>
+
+      {/* Portfolio Section */}
+      <section id="portfolio" className="py-20" data-magicpath-id="66" data-magicpath-path="CinebelgicanoHomepage.tsx">
+        <div className="max-w-7xl mx-auto px-4" data-magicpath-id="67" data-magicpath-path="CinebelgicanoHomepage.tsx">
+          <div className="text-center mb-16" data-magicpath-id="68" data-magicpath-path="CinebelgicanoHomepage.tsx">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4" data-magicpath-id="69" data-magicpath-path="CinebelgicanoHomepage.tsx">Portfolio</h2>
+            <p className="text-lg text-gray-600" data-magicpath-id="70" data-magicpath-path="CinebelgicanoHomepage.tsx">Award-winning documentaries and narrative films</p>
+          </div>
+          <FeaturedFilmsCarousel data-magicpath-id="71" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+        </div>
+      </section>
+
+      {/* Current Projects */}
+      <section className="py-20 bg-gray-50" data-magicpath-id="72" data-magicpath-path="CinebelgicanoHomepage.tsx">
+        <div className="max-w-7xl mx-auto px-4" data-magicpath-id="73" data-magicpath-path="CinebelgicanoHomepage.tsx">
+          <div className="text-center mb-16" data-magicpath-id="74" data-magicpath-path="CinebelgicanoHomepage.tsx">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4" data-magicpath-id="75" data-magicpath-path="CinebelgicanoHomepage.tsx">Current Projects</h2>
+            <p className="text-lg text-gray-600" data-magicpath-id="76" data-magicpath-path="CinebelgicanoHomepage.tsx">Active developments and ongoing collaborations</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8" data-magicpath-id="77" data-magicpath-path="CinebelgicanoHomepage.tsx">
+            {currentProjects.map((project, index) => <Card key={project.mpid} className="border-2 border-gray-200" data-magicpath-id="78" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                <CardHeader data-magicpath-id="79" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                  <div className="flex items-center justify-between" data-magicpath-id="80" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                    <CardTitle className="text-xl" data-magicpath-uuid={(project as any)["mpid"] ?? "unsafe"} data-magicpath-field="title:unknown" data-magicpath-id="81" data-magicpath-path="CinebelgicanoHomepage.tsx">{project.title}</CardTitle>
+                    <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200" data-magicpath-uuid={(project as any)["mpid"] ?? "unsafe"} data-magicpath-field="status:unknown" data-magicpath-id="82" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                      {project.status}
+                    </Badge>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-4" data-magicpath-id="83" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                  <p className="text-gray-600" data-magicpath-uuid={(project as any)["mpid"] ?? "unsafe"} data-magicpath-field="description:unknown" data-magicpath-id="84" data-magicpath-path="CinebelgicanoHomepage.tsx">{project.description}</p>
+                  <div className="grid grid-cols-2 gap-4 text-sm" data-magicpath-id="85" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                    <div data-magicpath-id="86" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                      <span className="font-medium text-gray-900" data-magicpath-id="87" data-magicpath-path="CinebelgicanoHomepage.tsx">Timeline:</span>
+                      <p className="text-gray-600" data-magicpath-uuid={(project as any)["mpid"] ?? "unsafe"} data-magicpath-field="timeline:unknown" data-magicpath-id="88" data-magicpath-path="CinebelgicanoHomepage.tsx">{project.timeline}</p>
+                    </div>
+                    <div data-magicpath-id="89" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                      <span className="font-medium text-gray-900" data-magicpath-id="90" data-magicpath-path="CinebelgicanoHomepage.tsx">Budget:</span>
+                      <p className="text-gray-600" data-magicpath-uuid={(project as any)["mpid"] ?? "unsafe"} data-magicpath-field="budget:unknown" data-magicpath-id="91" data-magicpath-path="CinebelgicanoHomepage.tsx">{project.budget}</p>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>)}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Awards Ribbon */}
-        <section data-magicpath-id="92" data-magicpath-path="CinebelgicanoHomepage.tsx">
-          <h2 className="text-3xl font-black mb-8 text-center uppercase tracking-wide" style={{
-          fontFamily: 'Inter, Roboto, Arial, Helvetica, sans-serif'
-        }} data-magicpath-id="93" data-magicpath-path="CinebelgicanoHomepage.tsx">Awards & Recognition</h2>
-          <ScrollArea className="w-full whitespace-nowrap rounded-md border border-white/20" data-magicpath-id="94" data-magicpath-path="CinebelgicanoHomepage.tsx">
-            <div className="flex w-max space-x-6 p-6" data-magicpath-id="95" data-magicpath-path="CinebelgicanoHomepage.tsx">
-              {awards.map((award, index) => <TooltipProvider key={index} data-magicpath-id="96" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                  <Tooltip data-magicpath-id="97" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                    <TooltipTrigger asChild data-magicpath-id="98" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                      <Card className="w-64 flex-shrink-0 cursor-pointer hover:shadow-md transition-shadow bg-gray-900 border-white/20" data-magicpath-id="99" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                        <CardContent className="p-4 text-center" data-magicpath-id="100" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                          <Award className="h-8 w-8 mx-auto mb-2 text-white" data-magicpath-id="101" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-                          <h3 className="font-black text-white uppercase" style={{
-                        fontFamily: 'Inter, Roboto, Arial, Helvetica, sans-serif'
-                      }} data-magicpath-uuid={(award as any)["mpid"] ?? "unsafe"} data-magicpath-field="name:unknown" data-magicpath-id="102" data-magicpath-path="CinebelgicanoHomepage.tsx">{award.name}</h3>
-                          <p className="text-sm text-gray-300" data-magicpath-uuid={(award as any)["mpid"] ?? "unsafe"} data-magicpath-field="festival:unknown" data-magicpath-id="103" data-magicpath-path="CinebelgicanoHomepage.tsx">{award.festival}</p>
-                          <p className="text-sm font-bold text-white" data-magicpath-uuid={(award as any)["mpid"] ?? "unsafe"} data-magicpath-field="year:unknown" data-magicpath-id="104" data-magicpath-path="CinebelgicanoHomepage.tsx">{award.year}</p>
-                        </CardContent>
-                      </Card>
-                    </TooltipTrigger>
-                    <TooltipContent className="bg-white text-black" data-magicpath-id="105" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                      <p data-magicpath-uuid={(award as any)["mpid"] ?? "unsafe"} data-magicpath-field="festival:unknown,name:unknown,year:unknown" data-magicpath-id="106" data-magicpath-path="CinebelgicanoHomepage.tsx">{award.name} - {award.festival} ({award.year})</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>)}
+      {/* Industry Recognition & Credentials */}
+      <section id="credentials" className="py-20" data-magicpath-id="92" data-magicpath-path="CinebelgicanoHomepage.tsx">
+        <div className="max-w-7xl mx-auto px-4" data-magicpath-id="93" data-magicpath-path="CinebelgicanoHomepage.tsx">
+          <div className="text-center mb-16" data-magicpath-id="94" data-magicpath-path="CinebelgicanoHomepage.tsx">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4" data-magicpath-id="95" data-magicpath-path="CinebelgicanoHomepage.tsx">Industry Recognition</h2>
+            <p className="text-lg text-gray-600" data-magicpath-id="96" data-magicpath-path="CinebelgicanoHomepage.tsx">Awards, partnerships, and professional achievements</p>
+          </div>
+
+          <div className="space-y-12" data-magicpath-id="97" data-magicpath-path="CinebelgicanoHomepage.tsx">
+            {credentials.map((category, categoryIndex) => <div key={categoryIndex} data-magicpath-id="98" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                <h3 className="text-2xl font-bold text-gray-900 mb-8" data-magicpath-uuid={(category as any)["mpid"] ?? "unsafe"} data-magicpath-field="category:unknown" data-magicpath-id="99" data-magicpath-path="CinebelgicanoHomepage.tsx">{category.category}</h3>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6" data-magicpath-id="100" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                  {category.items.map((item: any, itemIndex: number) => <Card key={item.mpid} className="hover:shadow-lg transition-shadow" data-magicpath-id="101" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                      <CardHeader data-magicpath-id="102" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                        <div className="flex items-center gap-3" data-magicpath-id="103" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                          <Award className="h-6 w-6 text-yellow-600" data-magicpath-id="104" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                          <div data-magicpath-id="105" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                            <CardTitle className="text-lg" data-magicpath-id="106" data-magicpath-path="CinebelgicanoHomepage.tsx">{item.name}</CardTitle>
+                            {item.project && <p className="text-sm text-gray-600" data-magicpath-id="107" data-magicpath-path="CinebelgicanoHomepage.tsx">"{item.project}"</p>}
+                          </div>
+                        </div>
+                      </CardHeader>
+                      <CardContent className="space-y-3" data-magicpath-id="108" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                        <div className="flex items-center justify-between" data-magicpath-id="109" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                          <span className="font-medium text-gray-900" data-magicpath-id="110" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                            {item.festival || item.type}
+                          </span>
+                          <Badge variant="secondary" data-magicpath-id="111" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                            {item.year || item.duration}
+                          </Badge>
+                        </div>
+                        <p className="text-sm text-gray-600" data-magicpath-id="112" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                          {item.significance || item.description}
+                        </p>
+                      </CardContent>
+                    </Card>)}
+                </div>
+              </div>)}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-20 bg-gray-50" data-magicpath-id="113" data-magicpath-path="CinebelgicanoHomepage.tsx">
+        <div className="max-w-7xl mx-auto px-4" data-magicpath-id="114" data-magicpath-path="CinebelgicanoHomepage.tsx">
+          <div className="text-center mb-16" data-magicpath-id="115" data-magicpath-path="CinebelgicanoHomepage.tsx">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4" data-magicpath-id="116" data-magicpath-path="CinebelgicanoHomepage.tsx">Industry Endorsements</h2>
+            <p className="text-lg text-gray-600" data-magicpath-id="117" data-magicpath-path="CinebelgicanoHomepage.tsx">What industry professionals say about our work</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8" data-magicpath-id="118" data-magicpath-path="CinebelgicanoHomepage.tsx">
+            {testimonials.map((testimonial, index) => <motion.div key={testimonial.mpid} initial={{
+            opacity: 0,
+            y: 50
+          }} animate={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.5,
+            delay: index * 0.1
+          }} data-magicpath-id="119" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                <Card className="h-full" data-magicpath-id="120" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                  <CardContent className="p-6" data-magicpath-id="121" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                    <Quote className="h-8 w-8 text-gray-400 mb-4" data-magicpath-id="122" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                    <blockquote className="text-gray-700 mb-6 italic" data-magicpath-uuid={(testimonial as any)["mpid"] ?? "unsafe"} data-magicpath-field="quote:unknown" data-magicpath-id="123" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                      "{testimonial.quote}"
+                    </blockquote>
+                    <div className="flex items-center gap-3" data-magicpath-id="124" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                      <Avatar data-magicpath-id="125" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                        <AvatarImage src={testimonial.image} alt={testimonial.author} data-magicpath-uuid={(testimonial as any)["mpid"] ?? "unsafe"} data-magicpath-field="image:unknown" data-magicpath-id="126" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                        <AvatarFallback data-magicpath-id="127" data-magicpath-path="CinebelgicanoHomepage.tsx">{testimonial.author.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                      </Avatar>
+                      <div data-magicpath-id="128" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                        <p className="font-semibold text-gray-900" data-magicpath-uuid={(testimonial as any)["mpid"] ?? "unsafe"} data-magicpath-field="author:unknown" data-magicpath-id="129" data-magicpath-path="CinebelgicanoHomepage.tsx">{testimonial.author}</p>
+                        <p className="text-sm text-gray-600" data-magicpath-uuid={(testimonial as any)["mpid"] ?? "unsafe"} data-magicpath-field="title:unknown" data-magicpath-id="130" data-magicpath-path="CinebelgicanoHomepage.tsx">{testimonial.title}</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>)}
+          </div>
+        </div>
+      </section>
+
+      {/* Downloadable Portfolio Materials */}
+      <section className="py-20" data-magicpath-id="131" data-magicpath-path="CinebelgicanoHomepage.tsx">
+        <div className="max-w-7xl mx-auto px-4" data-magicpath-id="132" data-magicpath-path="CinebelgicanoHomepage.tsx">
+          <div className="text-center mb-16" data-magicpath-id="133" data-magicpath-path="CinebelgicanoHomepage.tsx">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4" data-magicpath-id="134" data-magicpath-path="CinebelgicanoHomepage.tsx">Portfolio Materials</h2>
+            <p className="text-lg text-gray-600" data-magicpath-id="135" data-magicpath-path="CinebelgicanoHomepage.tsx">Download comprehensive project documentation and capabilities</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8" data-magicpath-id="136" data-magicpath-path="CinebelgicanoHomepage.tsx">
+            {portfolioMaterials.map((material, index) => <Card key={material.mpid} className="text-center hover:shadow-lg transition-shadow" data-magicpath-id="137" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                <CardHeader data-magicpath-id="138" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                  <FileText className="h-12 w-12 text-blue-600 mx-auto mb-4" data-magicpath-id="139" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                  <CardTitle className="text-lg" data-magicpath-uuid={(material as any)["mpid"] ?? "unsafe"} data-magicpath-field="title:unknown" data-magicpath-id="140" data-magicpath-path="CinebelgicanoHomepage.tsx">{material.title}</CardTitle>
+                  <p className="text-gray-600" data-magicpath-uuid={(material as any)["mpid"] ?? "unsafe"} data-magicpath-field="description:unknown" data-magicpath-id="141" data-magicpath-path="CinebelgicanoHomepage.tsx">{material.description}</p>
+                </CardHeader>
+                <CardContent className="space-y-4" data-magicpath-id="142" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                  <div className="flex justify-between text-sm text-gray-600" data-magicpath-id="143" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                    <span data-magicpath-uuid={(material as any)["mpid"] ?? "unsafe"} data-magicpath-field="format:unknown" data-magicpath-id="144" data-magicpath-path="CinebelgicanoHomepage.tsx">Format: {material.format}</span>
+                    <span data-magicpath-uuid={(material as any)["mpid"] ?? "unsafe"} data-magicpath-field="size:unknown" data-magicpath-id="145" data-magicpath-path="CinebelgicanoHomepage.tsx">Size: {material.size}</span>
+                  </div>
+                  <Button className="w-full" onClick={() => handleDownloadMaterial(material)} data-magicpath-id="146" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                    <Download className="mr-2 h-4 w-4" data-magicpath-id="147" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                    Download
+                  </Button>
+                </CardContent>
+              </Card>)}
+          </div>
+        </div>
+      </section>
+
+      {/* Video Gallery */}
+      <section className="py-20 bg-gray-50" data-magicpath-id="148" data-magicpath-path="CinebelgicanoHomepage.tsx">
+        <div className="max-w-7xl mx-auto px-4" data-magicpath-id="149" data-magicpath-path="CinebelgicanoHomepage.tsx">
+          <div className="text-center mb-16" data-magicpath-id="150" data-magicpath-path="CinebelgicanoHomepage.tsx">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4" data-magicpath-id="151" data-magicpath-path="CinebelgicanoHomepage.tsx">Video Gallery</h2>
+            <p className="text-lg text-gray-600" data-magicpath-id="152" data-magicpath-path="CinebelgicanoHomepage.tsx">Trailers, behind-the-scenes, and project highlights</p>
+          </div>
+          <VideoGrid data-magicpath-id="153" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+        </div>
+      </section>
+
+      {/* Professional Contact Form & Calendar Booking Footer */}
+      <footer id="contact" className="bg-gray-900 text-white" data-magicpath-id="154" data-magicpath-path="CinebelgicanoHomepage.tsx">
+        <div className="max-w-7xl mx-auto px-4 py-16" data-magicpath-id="155" data-magicpath-path="CinebelgicanoHomepage.tsx">
+          <div className="grid lg:grid-cols-2 gap-12" data-magicpath-id="156" data-magicpath-path="CinebelgicanoHomepage.tsx">
+            {/* Contact Form */}
+            <div data-magicpath-id="157" data-magicpath-path="CinebelgicanoHomepage.tsx">
+              <h3 className="text-2xl font-bold mb-6" data-magicpath-id="158" data-magicpath-path="CinebelgicanoHomepage.tsx">Start Your Project</h3>
+              <p className="text-gray-300 mb-8" data-magicpath-id="159" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                Ready to collaborate? Get in touch to discuss your project requirements and timeline.
+              </p>
+              
+              <form onSubmit={handleContactSubmit} className="space-y-6" data-magicpath-id="160" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                <div className="grid md:grid-cols-2 gap-4" data-magicpath-id="161" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                  <div data-magicpath-id="162" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                    <Label htmlFor="name" className="text-white" data-magicpath-id="163" data-magicpath-path="CinebelgicanoHomepage.tsx">Name *</Label>
+                    <Input id="name" value={contactFormData.name} onChange={e => setContactFormData({
+                    ...contactFormData,
+                    name: e.target.value
+                  })} className="bg-gray-800 border-gray-700 text-white" required data-magicpath-id="164" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                  </div>
+                  <div data-magicpath-id="165" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                    <Label htmlFor="email" className="text-white" data-magicpath-id="166" data-magicpath-path="CinebelgicanoHomepage.tsx">Email *</Label>
+                    <Input id="email" type="email" value={contactFormData.email} onChange={e => setContactFormData({
+                    ...contactFormData,
+                    email: e.target.value
+                  })} className="bg-gray-800 border-gray-700 text-white" required data-magicpath-id="167" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                  </div>
+                </div>
+                
+                <div className="grid md:grid-cols-2 gap-4" data-magicpath-id="168" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                  <div data-magicpath-id="169" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                    <Label htmlFor="company" className="text-white" data-magicpath-id="170" data-magicpath-path="CinebelgicanoHomepage.tsx">Company/Organization</Label>
+                    <Input id="company" value={contactFormData.company} onChange={e => setContactFormData({
+                    ...contactFormData,
+                    company: e.target.value
+                  })} className="bg-gray-800 border-gray-700 text-white" data-magicpath-id="171" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                  </div>
+                  <div data-magicpath-id="172" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                    <Label htmlFor="projectType" className="text-white" data-magicpath-id="173" data-magicpath-path="CinebelgicanoHomepage.tsx">Project Type</Label>
+                    <Select value={contactFormData.projectType} onValueChange={value => setContactFormData({
+                    ...contactFormData,
+                    projectType: value
+                  })}>
+                      <SelectTrigger className="bg-gray-800 border-gray-700 text-white" data-magicpath-id="174" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                        <SelectValue placeholder="Select project type" data-magicpath-id="175" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                      </SelectTrigger>
+                      <SelectContent data-magicpath-id="176" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                        <SelectItem value="documentary" data-magicpath-id="177" data-magicpath-path="CinebelgicanoHomepage.tsx">Documentary</SelectItem>
+                        <SelectItem value="narrative" data-magicpath-id="178" data-magicpath-path="CinebelgicanoHomepage.tsx">Narrative Film</SelectItem>
+                        <SelectItem value="commercial" data-magicpath-id="179" data-magicpath-path="CinebelgicanoHomepage.tsx">Commercial</SelectItem>
+                        <SelectItem value="co-production" data-magicpath-id="180" data-magicpath-path="CinebelgicanoHomepage.tsx">Co-Production</SelectItem>
+                        <SelectItem value="consultation" data-magicpath-id="181" data-magicpath-path="CinebelgicanoHomepage.tsx">Consultation</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+
+                <div data-magicpath-id="182" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                  <Label htmlFor="timeline" className="text-white" data-magicpath-id="183" data-magicpath-path="CinebelgicanoHomepage.tsx">Project Timeline</Label>
+                  <Select value={contactFormData.timeline} onValueChange={value => setContactFormData({
+                  ...contactFormData,
+                  timeline: value
+                })}>
+                    <SelectTrigger className="bg-gray-800 border-gray-700 text-white" data-magicpath-id="184" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                      <SelectValue placeholder="Select timeline" data-magicpath-id="185" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                    </SelectTrigger>
+                    <SelectContent data-magicpath-id="186" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                      <SelectItem value="immediate" data-magicpath-id="187" data-magicpath-path="CinebelgicanoHomepage.tsx">Immediate (1-3 months)</SelectItem>
+                      <SelectItem value="short" data-magicpath-id="188" data-magicpath-path="CinebelgicanoHomepage.tsx">Short-term (3-6 months)</SelectItem>
+                      <SelectItem value="medium" data-magicpath-id="189" data-magicpath-path="CinebelgicanoHomepage.tsx">Medium-term (6-12 months)</SelectItem>
+                      <SelectItem value="long" data-magicpath-id="190" data-magicpath-path="CinebelgicanoHomepage.tsx">Long-term (12+ months)</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div data-magicpath-id="191" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                  <Label htmlFor="message" className="text-white" data-magicpath-id="192" data-magicpath-path="CinebelgicanoHomepage.tsx">Project Details *</Label>
+                  <Textarea id="message" value={contactFormData.message} onChange={e => setContactFormData({
+                  ...contactFormData,
+                  message: e.target.value
+                })} className="bg-gray-800 border-gray-700 text-white min-h-[120px]" placeholder="Tell us about your project, goals, and requirements..." required data-magicpath-id="193" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                </div>
+
+                <Button type="submit" size="lg" className="w-full bg-white text-gray-900 hover:bg-gray-100" data-magicpath-id="194" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                  <Send className="mr-2 h-5 w-5" data-magicpath-id="195" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                  Send Project Inquiry
+                </Button>
+              </form>
             </div>
-          </ScrollArea>
-        </section>
 
-        {/* Video Grid */}
-        <section data-magicpath-id="107" data-magicpath-path="CinebelgicanoHomepage.tsx">
-          <h2 className="text-3xl font-black mb-8 text-center uppercase tracking-wide" style={{
-          fontFamily: 'Inter, Roboto, Arial, Helvetica, sans-serif'
-        }} data-magicpath-id="108" data-magicpath-path="CinebelgicanoHomepage.tsx">Video Gallery</h2>
-          <VideoGrid data-magicpath-id="109" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-        </section>
-
-        {/* Image Gallery Slider */}
-        <section data-magicpath-id="110" data-magicpath-path="CinebelgicanoHomepage.tsx">
-          <h2 className="text-3xl font-black mb-8 text-center uppercase tracking-wide" style={{
-          fontFamily: 'Inter, Roboto, Arial, Helvetica, sans-serif'
-        }} data-magicpath-id="111" data-magicpath-path="CinebelgicanoHomepage.tsx">Behind the Scenes</h2>
-          <ImageGallerySlider data-magicpath-id="112" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-        </section>
-      </main>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 border-t border-white/20" data-magicpath-id="113" data-magicpath-path="CinebelgicanoHomepage.tsx">
-        <div className="max-w-7xl mx-auto px-4 py-12" data-magicpath-id="114" data-magicpath-path="CinebelgicanoHomepage.tsx">
-          <div className="grid md:grid-cols-4 gap-8" data-magicpath-id="115" data-magicpath-path="CinebelgicanoHomepage.tsx">
-            {/* Logo and Company */}
-            <div className="md:col-span-1" data-magicpath-id="116" data-magicpath-path="CinebelgicanoHomepage.tsx">
-              <img src="https://storage.googleapis.com/storage.magicpath.ai/user/282430617021460480/assets/d4f30712-cbda-493b-bff6-5d5d91de2705.jpg?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=api-storage%40magicpath.iam.gserviceaccount.com%2F20250628%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20250628T111823Z&X-Goog-Expires=3600&X-Goog-SignedHeaders=host&X-Goog-Signature=ab8f202d29a4b22e6920af155d86639e7bcdc13b1886d84065807478ccbcb1c2e62dcada404779b18ca3ceefc55877362911dd4f6ba2c46c79d85497992517e33938a74a71ec359ae6bbaf4d4aa916a24f28e7673cda608949367d544f65ea427e8eec048b48fdb5078ebcbdd0cb3108efce75563513325b37842a18f515d289a5e0d4a7540a48c52568a9dae142ada7079b593a8ea5390ba3dadbad9193cbc29dee4c4484e2c8d7fc5635e23e8524998fbe48bef8035af5e37edf1ef6b668b4bee8d0accbb0d9e4811ec0a22829647eadc27c264995d27cf3033aef384527bac156d1ae55078af08bb4b993b6d174089e37d2506cf609560e50ea14c423972a" alt="Cinebelgicano Productions logo" className="w-16 h-16 object-contain mb-4" data-magicpath-id="117" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-              <h3 className="font-black mb-2 uppercase text-white" style={{
-              fontFamily: 'Inter, Roboto, Arial, Helvetica, sans-serif'
-            }} data-magicpath-id="118" data-magicpath-path="CinebelgicanoHomepage.tsx">{productionCompany.name}</h3>
-              <p className="text-sm text-gray-300" data-magicpath-id="119" data-magicpath-path="CinebelgicanoHomepage.tsx">Independent film production</p>
-            </div>
-
-            {/* Contact Info */}
-            <div data-magicpath-id="120" data-magicpath-path="CinebelgicanoHomepage.tsx">
-              <h3 className="font-black mb-4 uppercase text-white" style={{
-              fontFamily: 'Inter, Roboto, Arial, Helvetica, sans-serif'
-            }} data-magicpath-id="121" data-magicpath-path="CinebelgicanoHomepage.tsx">Contact</h3>
-              <div className="space-y-2 text-sm text-gray-300" data-magicpath-id="122" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                <div className="flex items-center gap-2" data-magicpath-id="123" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                  <Mail className="h-4 w-4" data-magicpath-id="124" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-                  <span data-magicpath-id="125" data-magicpath-path="CinebelgicanoHomepage.tsx">info@cinebelgicano.com</span>
-                </div>
-                <div className="flex items-center gap-2" data-magicpath-id="126" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                  <Phone className="h-4 w-4" data-magicpath-id="127" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-                  <span data-magicpath-id="128" data-magicpath-path="CinebelgicanoHomepage.tsx">+32 2 123 4567</span>
-                </div>
-                <div className="flex items-center gap-2" data-magicpath-id="129" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                  <MapPin className="h-4 w-4" data-magicpath-id="130" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-                  <span data-magicpath-id="131" data-magicpath-path="CinebelgicanoHomepage.tsx">Brussels, Belgium</span>
-                </div>
+            {/* Calendar Booking & Company Info */}
+            <div className="space-y-8" data-magicpath-id="196" data-magicpath-path="CinebelgicanoHomepage.tsx">
+              <div data-magicpath-id="197" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                <h3 className="text-2xl font-bold mb-6" data-magicpath-id="198" data-magicpath-path="CinebelgicanoHomepage.tsx">Schedule a Meeting</h3>
+                <p className="text-gray-300 mb-6" data-magicpath-id="199" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                  Book a consultation to discuss your project in detail. Available for in-person meetings in Brussels or virtual calls worldwide.
+                </p>
+                
+                <Card className="bg-gray-800 border-gray-700" data-magicpath-id="200" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                  <CardContent className="p-6 text-center" data-magicpath-id="201" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                    <Calendar className="h-12 w-12 text-blue-400 mx-auto mb-4" data-magicpath-id="202" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                    <h4 className="text-lg font-semibold text-white mb-2" data-magicpath-id="203" data-magicpath-path="CinebelgicanoHomepage.tsx">Professional Consultation</h4>
+                    <p className="text-gray-300 mb-4" data-magicpath-id="204" data-magicpath-path="CinebelgicanoHomepage.tsx">30-60 minute project discussion</p>
+                    <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700" onClick={handleBookingCalendar} data-magicpath-id="205" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                      <Clock className="mr-2 h-5 w-5" data-magicpath-id="206" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                      Book Calendar Slot
+                    </Button>
+                  </CardContent>
+                </Card>
               </div>
-            </div>
 
-            {/* Social Links */}
-            <div data-magicpath-id="132" data-magicpath-path="CinebelgicanoHomepage.tsx">
-              <h3 className="font-black mb-4 uppercase text-white" style={{
-              fontFamily: 'Inter, Roboto, Arial, Helvetica, sans-serif'
-            }} data-magicpath-id="133" data-magicpath-path="CinebelgicanoHomepage.tsx">Follow Us</h3>
-              <div className="flex gap-4" data-magicpath-id="134" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                <Button variant="ghost" size="icon" asChild className="text-white hover:bg-white hover:text-black" data-magicpath-id="135" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                  <a href={productionCompany.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                    <Facebook className="h-5 w-5" data-magicpath-id="136" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-                  </a>
-                </Button>
-                <Button variant="ghost" size="icon" asChild className="text-white hover:bg-white hover:text-black" data-magicpath-id="137" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                  <a href={productionCompany.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                    <Linkedin className="h-5 w-5" data-magicpath-id="138" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-                  </a>
-                </Button>
-                <Button variant="ghost" size="icon" asChild className="text-white hover:bg-white hover:text-black" data-magicpath-id="139" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                  <a href={productionCompany.social.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                    <Youtube className="h-5 w-5" data-magicpath-id="140" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-                  </a>
-                </Button>
-              </div>
-            </div>
+              {/* Company Information */}
+              <div data-magicpath-id="207" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                <h4 className="text-xl font-bold mb-4" data-magicpath-id="208" data-magicpath-path="CinebelgicanoHomepage.tsx">Company Information</h4>
+                <div className="space-y-4" data-magicpath-id="209" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                  <div className="flex items-center gap-3" data-magicpath-id="210" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                    <Building className="h-5 w-5 text-gray-400" data-magicpath-id="211" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                    <div data-magicpath-id="212" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                      <p className="font-semibold text-white" data-magicpath-id="213" data-magicpath-path="CinebelgicanoHomepage.tsx">{productionCompany.name}</p>
+                      <p className="text-gray-300" data-magicpath-id="214" data-magicpath-path="CinebelgicanoHomepage.tsx">Independent Film Production</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3" data-magicpath-id="215" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                    <MapPin className="h-5 w-5 text-gray-400" data-magicpath-id="216" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                    <span className="text-gray-300" data-magicpath-id="217" data-magicpath-path="CinebelgicanoHomepage.tsx">Brussels, Belgium</span>
+                  </div>
+                  
+                  <div className="flex items-center gap-3" data-magicpath-id="218" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                    <Mail className="h-5 w-5 text-gray-400" data-magicpath-id="219" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                    <a href="mailto:info@cinebelgicano.com" className="text-blue-400 hover:underline">
+                      info@cinebelgicano.com
+                    </a>
+                  </div>
+                  
+                  <div className="flex items-center gap-3" data-magicpath-id="220" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                    <Phone className="h-5 w-5 text-gray-400" data-magicpath-id="221" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                    <a href="tel:+3221234567" className="text-blue-400 hover:underline">
+                      +32 2 123 4567
+                    </a>
+                  </div>
+                </div>
 
-            {/* Partner Logos */}
-            <div data-magicpath-id="141" data-magicpath-path="CinebelgicanoHomepage.tsx">
-              <h3 className="font-black mb-4 uppercase text-white" style={{
-              fontFamily: 'Inter, Roboto, Arial, Helvetica, sans-serif'
-            }} data-magicpath-id="142" data-magicpath-path="CinebelgicanoHomepage.tsx">Partners</h3>
-              <div className="flex flex-wrap gap-4" data-magicpath-id="143" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                {partners.map((partner, index) => <div key={index} className="flex items-center gap-2" data-magicpath-id="144" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                    <img src={partner.logo} alt={`${partner.name} logo`} className="h-8 w-auto opacity-60 hover:opacity-100 transition-opacity filter invert" data-magicpath-uuid={(partner as any)["mpid"] ?? "unsafe"} data-magicpath-field="logo:unknown" data-magicpath-id="145" data-magicpath-path="CinebelgicanoHomepage.tsx" />
-                  </div>)}
+                {/* Social Links */}
+                <div className="flex gap-4 mt-6" data-magicpath-id="222" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                  <Button variant="ghost" size="icon" asChild className="text-gray-400 hover:text-white" data-magicpath-id="223" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                    <a href={productionCompany.social.facebook} target="_blank" rel="noopener noreferrer">
+                      <Facebook className="h-5 w-5" data-magicpath-id="224" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                    </a>
+                  </Button>
+                  <Button variant="ghost" size="icon" asChild className="text-gray-400 hover:text-white" data-magicpath-id="225" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                    <a href={productionCompany.social.linkedin} target="_blank" rel="noopener noreferrer">
+                      <Linkedin className="h-5 w-5" data-magicpath-id="226" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                    </a>
+                  </Button>
+                  <Button variant="ghost" size="icon" asChild className="text-gray-400 hover:text-white" data-magicpath-id="227" data-magicpath-path="CinebelgicanoHomepage.tsx">
+                    <a href={productionCompany.social.youtube} target="_blank" rel="noopener noreferrer">
+                      <Youtube className="h-5 w-5" data-magicpath-id="228" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                    </a>
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
           
-          <Separator className="my-8 bg-white/20" data-magicpath-id="146" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+          <Separator className="my-8 bg-gray-700" data-magicpath-id="229" data-magicpath-path="CinebelgicanoHomepage.tsx" />
           
-          <div className="text-center text-sm text-gray-300" data-magicpath-id="147" data-magicpath-path="CinebelgicanoHomepage.tsx">
-            <p data-magicpath-id="148" data-magicpath-path="CinebelgicanoHomepage.tsx">&copy; 2024 {productionCompany.name}. All rights reserved.</p>
+          <div className="text-center text-gray-400" data-magicpath-id="230" data-magicpath-path="CinebelgicanoHomepage.tsx">
+            <p data-magicpath-id="231" data-magicpath-path="CinebelgicanoHomepage.tsx">&copy; 2024 {productionCompany.name}. All rights reserved.</p>
           </div>
         </div>
       </footer>

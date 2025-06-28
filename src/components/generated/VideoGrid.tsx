@@ -22,7 +22,7 @@ const videos = [{
   viewNotes: "Winner of Brussels Film Festival 2023",
   category: "Trailer",
   duration: "2:34",
-  mpid: "314b8314-a043-4b7a-82c6-ca7314efa994"
+  mpid: "88dadf0d-cde1-4503-9dba-81d009afeca7"
 }, {
   id: 2,
   title: "Voices from the South - Episode 1 Teaser",
@@ -31,7 +31,7 @@ const videos = [{
   viewNotes: "Part of acclaimed documentary series",
   category: "Teaser",
   duration: "1:45",
-  mpid: "e1ac87bc-558b-4152-a4b3-9b99e4f1c70e"
+  mpid: "ac9441be-02b7-40d8-a9fc-539a668e6c85"
 }, {
   id: 3,
   title: "The Memory Keeper - Behind the Scenes",
@@ -40,7 +40,7 @@ const videos = [{
   viewNotes: "IDFA Special Mention recipient",
   category: "Behind the Scenes",
   duration: "3:12",
-  mpid: "ed4ea5b5-d8ef-4299-8098-cc36d52c3f03"
+  mpid: "648a2ba4-0cc1-4288-8191-bab580c6b60e"
 }, {
   id: 4,
   title: "Between Two Worlds - Director's Commentary",
@@ -49,7 +49,7 @@ const videos = [{
   viewNotes: "Insights into the filmmaking process",
   category: "Commentary",
   duration: "4:28",
-  mpid: "a3b295a7-2d0f-48be-8cbc-696e4aebeb75"
+  mpid: "f1f6a3cc-c2aa-47bc-9e5f-01affbcdde46"
 }, {
   id: 5,
   title: "Songs of Exile - Music Video",
@@ -58,7 +58,7 @@ const videos = [{
   viewNotes: "Featured soundtrack from the documentary",
   category: "Music Video",
   duration: "3:45",
-  mpid: "4edc5f48-6561-42ae-b96a-116a51d76c1b"
+  mpid: "633fc6eb-e6f8-450f-bbfc-ebd57f87ba8d"
 }, {
   id: 6,
   title: "Kinolatino Festival 2023 Highlights",
@@ -67,7 +67,7 @@ const videos = [{
   viewNotes: "Annual celebration of Latin American cinema",
   category: "Festival",
   duration: "5:20",
-  mpid: "00489c29-0744-4cbf-a882-cdc9cf1a50be"
+  mpid: "e9f7e3f1-efbc-4620-88a3-ec73773535a5"
 }] as any[];
 export default function VideoGrid({}: VideoGridProps) {
   const [loadingStates, setLoadingStates] = useState<Record<number, boolean>>(videos.reduce((acc, video) => ({
