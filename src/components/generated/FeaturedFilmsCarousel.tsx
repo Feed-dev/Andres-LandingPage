@@ -33,7 +33,7 @@ const featuredFilms = [{
   format: "Documentary Series",
   logline: "A three-part series examining Latin American cultural preservation in European diaspora communities.",
   highlights: ["Kinolatino Audience Choice", "VAF Supported", "International Distribution"],
-  poster: "https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=400&h=600&fit=crop",
+  poster: "https://storage.googleapis.com/storage.magicpath.ai/user/282430617021460480/assets/4343f03b-3444-47dc-8245-140baea8acf4.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=api-storage%40magicpath.iam.gserviceaccount.com%2F20250628%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20250628T114904Z&X-Goog-Expires=3600&X-Goog-SignedHeaders=host&X-Goog-Signature=9dbe1ad920249384cb1ec7e37ad5f378cdd4726bd9b169de83ea2e21e3b1aa4386f5fbb3f69dea2cefdf245765ceba8a2784efccb405409c79c03676bf84d82d222b6ccfa0128794da0dfbc1df18722dbe1254355da4be3de8084a34e4542f707cf4a6d5267b859a99a8779c03464723460d497be98e2a34d8842c42690c7fde6361a69f5516b0e12695df1f5292de9bbdfd3fbc96fe21547f1e4e429f4a95a3531cd175f4ac69b12310794b5c3843d91d691758a04bf8cb4579756741df8bce71d544d9f0df624d3ee4156e8eb4da0e0246f418aefced039cf1ce4b35c04d3dc82a9af489bbd88193ead63ad493e387757ee6475e02dc62a4cce6d2a2c2ca8f",
   trailerUrl: "https://youtube.com/watch?v=example2",
   mpid: "064bcd14-c775-46c8-a512-e22428be1cd1"
 }, {
