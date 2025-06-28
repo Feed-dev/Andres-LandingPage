@@ -16,7 +16,7 @@ export interface ImageGallerySliderProps {
 // Mock data for image gallery
 const galleryImages = [{
   id: 1,
-  src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop",
+  src: "https://storage.googleapis.com/storage.magicpath.ai/user/282430617021460480/assets/57aafccd-43a4-4da9-95f8-450b600c3f55.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=api-storage%40magicpath.iam.gserviceaccount.com%2F20250628%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20250628T112257Z&X-Goog-Expires=3600&X-Goog-SignedHeaders=host&X-Goog-Signature=0f0ef3adb98d10bfcb7ffe878c5cd3f2f8bef9258574ea08a7412604a688721bb8e4c306c4c6091436ee406b1169b8ec294a593103109c120c38c938f4f93a594fa44a0b13c07d1b519bde7ae4c84888258786cf728cb0f29422de5496d11e42aec086c9620e29980e3e46e7c460b538b8ca950dfad9a97c6e5fe293ffa4d9c9001e464ca7f2ab4dd8062cab10c1d6b9c4be2405a44c4b31c11c80715567bcab6bfe5b3dba7ccec96c1805089838aa0e0c1edc8adff0ff1115cb1902da2c3f2e1b75096924c5279b9df4f20815cde9e7e6b095ea0340ee1100c55ea8a43244ce0475370cb89ff5603497a58e4a67d000498bf543f921c3bfa20b561c1974cfba",
   alt: "Director Andrés Lübbert on set during filming",
   caption: "Andrés Lübbert directing on location in Brussels",
   category: "Director Portrait",
