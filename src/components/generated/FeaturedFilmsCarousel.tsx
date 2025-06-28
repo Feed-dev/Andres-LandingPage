@@ -43,7 +43,7 @@ const featuredFilms = [{
   format: "Short Documentary",
   logline: "An elderly Chilean exile in Brussels preserves his homeland's stories through traditional crafts and oral history.",
   highlights: ["IDFA Special Mention", "Festival Circuit", "Critical Acclaim"],
-  poster: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop",
+  poster: "https://storage.googleapis.com/storage.magicpath.ai/user/282430617021460480/assets/b6da4a1b-89cf-4127-abab-46af7501f8b7.png?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=api-storage%40magicpath.iam.gserviceaccount.com%2F20250628%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20250628T113851Z&X-Goog-Expires=3600&X-Goog-SignedHeaders=host&X-Goog-Signature=aa3fd3d6fb772501e918983fb5632b18888075ada5f77cb92dc6080039414c942caf09d6b91b8366ed16d5d70da908331a53510b4dea9fdaeaedb0db5e368591b478b58a45114ab9a7a441c713201b62a895cd47331a1f1bcdecbe3ce7a5846224ae68240d2130e5246764ad49b2786fdeeb2a23fb7fc2da85665a31358ad6c0214fc43745fbf4c8a50ca43aa5dc9d684fee235c1427b0efb6df773014c7bcdf6a86658c5896c8f3e748a3bf0c32a3317a2c3ad7b579c4ae0debadf8c20a1503310e7e2eca5ef4aeb29ea1bc358fc6687759f879dd1a349cb73c24c8153ab9bbd704ed683d333c970443dc7de59f11fadbe089e2fc12b121a9e0d626d9fbf28a",
   trailerUrl: "https://youtube.com/watch?v=example3",
   mpid: "b175c0e4-dc39-4534-b45c-3279d6eb44de"
 }, {
