@@ -43,46 +43,46 @@ const currentProjects = [{
   title: "New Latin-American Documentary Project",
   description: "Currently in development - exploring contemporary migration stories",
   status: "In Development",
-  mpid: "543e975d-77d8-496b-b1c6-42c5f83b1d08"
+  mpid: "47f8d526-de1c-4888-a067-a1c33ed22981"
 }, {
   title: "Kinolatino Festival 2024",
   description: "Co-organizing the annual celebration of Latin American cinema",
   status: "Ongoing",
-  mpid: "154c5417-029c-4856-8d61-76fcebf97ead"
+  mpid: "786306c7-66aa-492a-bc30-5ae6a335186a"
 }] as any[];
 const awards = [{
   name: "Best Documentary",
   festival: "Brussels Film Festival",
   year: "2023",
-  mpid: "85c2eb6f-5112-4492-8870-74d9bab7c150"
+  mpid: "cd0e1ddb-04db-426b-857a-417553b03342"
 }, {
   name: "Audience Choice",
   festival: "Kinolatino",
   year: "2022",
-  mpid: "22c862f8-6872-4e87-9518-fbeb090b6851"
+  mpid: "e0fac522-8034-44d8-b04e-bf4b32853524"
 }, {
   name: "Special Mention",
   festival: "IDFA",
   year: "2021",
-  mpid: "de6db5f7-c164-438f-9be2-804de2043e8e"
+  mpid: "83c7c992-c254-429f-8a65-014b9ad259d6"
 }, {
   name: "Best Director",
   festival: "Latin Film Festival",
   year: "2020",
-  mpid: "8408712e-4b09-440c-bdf5-5ff39f88a64e"
+  mpid: "5e777a64-220b-4ad8-aeb5-8f3bc5358f27"
 }] as any[];
 const partners = [{
   name: "Off World",
   logo: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=200&h=100&fit=crop",
-  mpid: "9709dbe9-53a9-4a2a-84dc-af4f94f64ece"
+  mpid: "132a2000-221d-4257-a9ab-24f9ee515478"
 }, {
   name: "VAF",
   logo: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=200&h=100&fit=crop",
-  mpid: "94e8b0c0-26a7-499c-ab04-643a43222997"
+  mpid: "870e2128-464c-4c78-bfd7-e2c12fb5882f"
 }, {
   name: "Al-Jazeera Witness",
   logo: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=200&h=100&fit=crop",
-  mpid: "7b2c9b15-ae1d-45aa-afe5-8ea5ad0fbcaf"
+  mpid: "4f49fb1a-deab-4e6e-85ff-f5b2e3ef0e1b"
 }] as any[];
 export default function CinebelgicanoHomepage({}: CinebelgicanoHomepageProps) {
   const [bioModalOpen, setBioModalOpen] = useState(false);
