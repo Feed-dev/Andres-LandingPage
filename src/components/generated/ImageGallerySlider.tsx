@@ -159,7 +159,8 @@ export default function ImageGallerySlider({}: ImageGallerySliderProps) {
                         marginTop: "0px",
                         width: "318px",
                         maxWidth: "318px",
-                        height: "212px"
+                        height: "auto",
+                        minHeight: "min-content"
                       }} data-magicpath-id="17" data-magicpath-path="ImageGallerySlider.tsx" />
                           </div> : <>
                             <picture data-magicpath-id="18" data-magicpath-path="ImageGallerySlider.tsx">
