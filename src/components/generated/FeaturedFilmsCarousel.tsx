@@ -28,7 +28,7 @@ const featuredFilms = [{
   mpid: "a042668e-cc5d-4967-80f9-0c0263285c53"
 }, {
   id: 2,
-  title: "Voices from the South",
+  title: "El Color Del Camaleon",
   year: 2022,
   format: "Documentary Series",
   logline: "A three-part series examining Latin American cultural preservation in European diaspora communities.",
