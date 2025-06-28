@@ -243,7 +243,7 @@ export default function CinebelgicanoHomepage({}: CinebelgicanoHomepageProps) {
             duration: 0.8
           }} className="relative" data-magicpath-id="14" data-magicpath-path="CinebelgicanoHomepage.tsx">
               <div className="relative" data-magicpath-id="15" data-magicpath-path="CinebelgicanoHomepage.tsx">
-                <img src={directorData.image} alt={`Professional portrait of ${directorData.name}`} className="w-full max-w-md mx-auto rounded-2xl shadow-2xl object-cover aspect-[3/4]" data-magicpath-id="16" data-magicpath-path="CinebelgicanoHomepage.tsx" />
+                <img src="https://imgs.search.brave.com/D5Q5fms1vhyCXFlqfIzQr-eaiko8Dznsa8W8uNZDxYE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9ici53/ZWIuaW1nMy5hY3N0/YS5uZXQvY18zMTBf/NDIwL3BpY3R1cmVz/LzE3LzEwLzE4LzE4/LzExLzE2ODAxODIu/anBn" alt={`Professional portrait of ${directorData.name}`} className="w-full max-w-md mx-auto rounded-2xl shadow-2xl object-cover aspect-[3/4]" data-magicpath-id="16" data-magicpath-path="CinebelgicanoHomepage.tsx" />
                 <div className="absolute -bottom-6 -right-6 bg-white rounded-xl p-4 shadow-lg border" data-magicpath-id="17" data-magicpath-path="CinebelgicanoHomepage.tsx">
                   <div className="flex items-center gap-2" data-magicpath-id="18" data-magicpath-path="CinebelgicanoHomepage.tsx">
                     <Award className="h-5 w-5 text-yellow-600" data-magicpath-id="19" data-magicpath-path="CinebelgicanoHomepage.tsx" />
