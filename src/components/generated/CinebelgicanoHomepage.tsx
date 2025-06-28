@@ -103,9 +103,9 @@ export default function CinebelgicanoHomepage({}: CinebelgicanoHomepageProps) {
       <header className="fixed top-4 left-4 z-50 bg-black/80 backdrop-blur-sm rounded-xl p-3 shadow-2xl hover:shadow-white/10 transition-all duration-300" data-magicpath-id="1" data-magicpath-path="CinebelgicanoHomepage.tsx">
         <a href="/" aria-label="Cinebelgicano Productions Home">
           <img src="https://storage.googleapis.com/storage.magicpath.ai/user/282430617021460480/assets/98b10cb1-37f4-4cee-85be-d7485cb3dd15.jpg?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=api-storage%40magicpath.iam.gserviceaccount.com%2F20250628%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20250628T111340Z&X-Goog-Expires=3600&X-Goog-SignedHeaders=host&X-Goog-Signature=52753d14d62024bdd05995c875eef053be36693d8bd0e6656e07e151546bc85f048123145dfe9548e729be3b50a74083a432c258a9f9f859b0c6027e8d435632ab9d0d00143b46805cf5f8bd55aee883c3db2ca1a66767452681e7227b0ee40f8cdbefdb4628dfa6de71411b2338ce5e6a5c30fa5307c3e1e297c82d417ce564e4f7ad48282960f0daf040ec832d7eeaa04fbb478f7813f17071413b4eab95f629c3218a2bb180dc39f45bdd0a3354645076635eb4d6e6dbe50c4e923c6236a1848ccf8366f2ff8ecf89089cf2a415831b7899841de6a986238d3bb4f86c293a7a0f6a4cb7ba6a528b226b6b8aafcdd6ca2e4b56f9d2d12a5acca6583df9f752" alt="Cinebelgicano Productions logo" className="w-12 h-12 object-contain" data-magicpath-id="2" data-magicpath-path="CinebelgicanoHomepage.tsx" style={{
-          width: "240px",
-          maxWidth: "240px",
-          height: "240px"
+          width: "200px",
+          maxWidth: "200px",
+          height: "200px"
         }} />
         </a>
       </header>
