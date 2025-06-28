@@ -38,7 +38,7 @@ const featuredFilms = [{
   mpid: "e2c496d0-819d-4769-bcdc-aa9367ba842d"
 }, {
   id: 3,
-  title: "The Memory Keeper",
+  title: "The Pride Liar",
   year: 2021,
   format: "Short Documentary",
   logline: "An elderly Chilean exile in Brussels preserves his homeland's stories through traditional crafts and oral history.",
