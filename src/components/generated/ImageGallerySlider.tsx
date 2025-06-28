@@ -20,70 +20,70 @@ const galleryImages = [{
   alt: "Director Andrés Lübbert on set during filming",
   caption: "Andrés Lübbert directing on location in Brussels",
   category: "Director Portrait",
-  mpid: "ac4962ad-cab6-41f2-b8ee-b85ec95cf6a8"
+  mpid: "bc24cebc-6785-4675-94b9-825cd45b8a95"
 }, {
   id: 2,
   src: "https://images.unsplash.com/photo-1489599735734-79b4212bea40?w=600&h=400&fit=crop",
   alt: "Key art from Crossing Borders documentary",
   caption: "Official poster for 'Crossing Borders' (2023)",
   category: "Film Key Art",
-  mpid: "68ebc0d0-315b-4911-8241-2771d4493571"
+  mpid: "702259b2-4e4c-45e1-8cc4-80a9de0f2dad"
 }, {
   id: 3,
   src: "https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=600&h=400&fit=crop",
   alt: "Festival screening at Brussels Film Festival",
   caption: "World premiere at Brussels Film Festival",
   category: "Festival Still",
-  mpid: "bd71f184-9641-41e1-afb9-1f32187658da"
+  mpid: "df0edef7-19a3-4cfe-85ee-fae6fe7fb801"
 }, {
   id: 4,
   src: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=600&h=400&fit=crop",
   alt: "Behind the scenes crew setting up equipment",
   caption: "Camera crew preparing for interview sequence",
   category: "On-Set Photo",
-  mpid: "fe16a33c-7fa2-4a55-914c-c4bf59ca0615"
+  mpid: "55e05ce8-1f7d-43c5-8d11-b3bba7a96b8e"
 }, {
   id: 5,
   src: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=600&h=400&fit=crop",
   alt: "Musicians performing in Songs of Exile documentary",
   caption: "Recording session for 'Songs of Exile' soundtrack",
   category: "Film Still",
-  mpid: "3d70ea5c-99cf-4ea9-92c8-3487faf865f8"
+  mpid: "7b9696ef-c023-4d21-bdce-2096d53f8491"
 }, {
   id: 6,
   src: "https://images.unsplash.com/photo-1542204165-65bf26472b9b?w=600&h=400&fit=crop",
   alt: "Award ceremony at IDFA festival",
   caption: "Receiving Special Mention at IDFA 2021",
   category: "Festival Still",
-  mpid: "285ee270-b51c-4f0f-b62b-5e5bee3f9d37"
+  mpid: "1cec61b0-bba6-46c2-b12b-61c8bfce7d6e"
 }, {
   id: 7,
   src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop&sat=-100",
   alt: "Black and white portrait of Andrés Lübbert",
   caption: "Studio portrait for press materials",
   category: "Director Portrait",
-  mpid: "aa0e3a05-a0a2-46b7-8ea4-64bd5809073f"
+  mpid: "255cc106-c785-49ce-84d5-09a2ef322ee2"
 }, {
   id: 8,
   src: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=600&h=400&fit=crop",
   alt: "Film equipment and crew during production",
   caption: "Production team setting up for documentary interview",
   category: "On-Set Photo",
-  mpid: "ec3eeed4-16f2-4fdf-ba87-9eca3f459b62"
+  mpid: "8b38de43-4011-4372-8fd5-7a116094e598"
 }, {
   id: 9,
   src: "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=600&h=400&fit=crop",
   alt: "Kinolatino festival venue with audience",
   caption: "Packed screening at Kinolatino Festival 2023",
   category: "Festival Still",
-  mpid: "1f31638b-aee2-46b9-a158-62b9b8b0a069"
+  mpid: "97510383-c3c7-40ac-8e62-7c45cf8d4684"
 }, {
   id: 10,
   src: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&h=400&fit=crop",
   alt: "Film poster display at international festival",
   caption: "International festival showcase display",
   category: "Film Key Art",
-  mpid: "781d54e5-1106-43b1-99b9-6be93ec2bbd2"
+  mpid: "26218614-bd38-483b-a7c5-007cc1cc44b2"
 }] as any[];
 export default function ImageGallerySlider({}: ImageGallerySliderProps) {
   const [loadingStates, setLoadingStates] = useState<Record<number, boolean>>(galleryImages.reduce((acc, image) => ({
@@ -155,14 +155,14 @@ export default function ImageGallerySlider({}: ImageGallerySliderProps) {
                             <AlertTriangle className="h-8 w-8 text-muted-foreground mb-2" data-magicpath-id="15" data-magicpath-path="ImageGallerySlider.tsx" />
                             <p className="text-sm text-muted-foreground" data-magicpath-id="16" data-magicpath-path="ImageGallerySlider.tsx">Failed to load image</p>
                           </div> : <>
-                            <img src={image.src} alt={image.alt} className={cn("w-full h-full object-cover group-hover:scale-105 transition-transform duration-300", loadingStates[image.id] ? "opacity-0" : "opacity-100")} onLoad={() => handleImageLoad(image.id)} onError={() => handleImageError(image.id)} data-magicpath-uuid={(image as any)["mpid"] ?? "unsafe"} data-magicpath-field="src:string" data-magicpath-id="17" data-magicpath-path="ImageGallerySlider.tsx" />
+                            <img src={image.src} alt={image.alt} className={cn("w-full h-full object-cover group-hover:scale-105 transition-transform duration-300", loadingStates[image.id] ? "opacity-0" : "opacity-100")} onLoad={() => handleImageLoad(image.id)} onError={() => handleImageError(image.id)} data-magicpath-uuid={(image as any)["mpid"] ?? "unsafe"} data-magicpath-field="src:unknown" data-magicpath-id="17" data-magicpath-path="ImageGallerySlider.tsx" />
                             
                             {/* Overlay with category */}
                             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" data-magicpath-id="18" data-magicpath-path="ImageGallerySlider.tsx" />
                             
                             {/* Category badge */}
                             <div className="absolute top-3 left-3" data-magicpath-id="19" data-magicpath-path="ImageGallerySlider.tsx">
-                              <span className={cn("inline-flex items-center px-2 py-1 rounded-full text-xs font-medium", getCategoryColor(image.category))} data-magicpath-uuid={(image as any)["mpid"] ?? "unsafe"} data-magicpath-field="category:string" data-magicpath-id="20" data-magicpath-path="ImageGallerySlider.tsx">
+                              <span className={cn("inline-flex items-center px-2 py-1 rounded-full text-xs font-medium", getCategoryColor(image.category))} data-magicpath-uuid={(image as any)["mpid"] ?? "unsafe"} data-magicpath-field="category:unknown" data-magicpath-id="20" data-magicpath-path="ImageGallerySlider.tsx">
                                 <Camera className="h-3 w-3 mr-1" />
                                 {image.category}
                               </span>
@@ -170,7 +170,7 @@ export default function ImageGallerySlider({}: ImageGallerySliderProps) {
                             
                             {/* Caption overlay on hover */}
                             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300" data-magicpath-id="21" data-magicpath-path="ImageGallerySlider.tsx">
-                              <p className="text-white text-sm font-medium" data-magicpath-uuid={(image as any)["mpid"] ?? "unsafe"} data-magicpath-field="caption:string" data-magicpath-id="22" data-magicpath-path="ImageGallerySlider.tsx">
+                              <p className="text-white text-sm font-medium" data-magicpath-uuid={(image as any)["mpid"] ?? "unsafe"} data-magicpath-field="caption:unknown" data-magicpath-id="22" data-magicpath-path="ImageGallerySlider.tsx">
                                 {image.caption}
                               </p>
                             </div>
@@ -180,8 +180,8 @@ export default function ImageGallerySlider({}: ImageGallerySliderProps) {
                   </TooltipTrigger>
                   <TooltipContent data-magicpath-id="23" data-magicpath-path="ImageGallerySlider.tsx">
                     <div className="max-w-xs" data-magicpath-id="24" data-magicpath-path="ImageGallerySlider.tsx">
-                      <p className="font-medium" data-magicpath-uuid={(image as any)["mpid"] ?? "unsafe"} data-magicpath-field="category:string" data-magicpath-id="25" data-magicpath-path="ImageGallerySlider.tsx">{image.category}</p>
-                      <p className="text-sm text-muted-foreground" data-magicpath-uuid={(image as any)["mpid"] ?? "unsafe"} data-magicpath-field="caption:string" data-magicpath-id="26" data-magicpath-path="ImageGallerySlider.tsx">{image.caption}</p>
+                      <p className="font-medium" data-magicpath-uuid={(image as any)["mpid"] ?? "unsafe"} data-magicpath-field="category:unknown" data-magicpath-id="25" data-magicpath-path="ImageGallerySlider.tsx">{image.category}</p>
+                      <p className="text-sm text-muted-foreground" data-magicpath-uuid={(image as any)["mpid"] ?? "unsafe"} data-magicpath-field="caption:unknown" data-magicpath-id="26" data-magicpath-path="ImageGallerySlider.tsx">{image.caption}</p>
                     </div>
                   </TooltipContent>
                 </Tooltip>

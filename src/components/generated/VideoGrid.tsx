@@ -22,7 +22,7 @@ const videos = [{
   viewNotes: "Winner of Brussels Film Festival 2023",
   category: "Trailer",
   duration: "2:34",
-  mpid: "98b27958-f3dd-49f6-b713-aed90c031a23"
+  mpid: "ac9759e7-86f0-423a-b03d-ee19c1eaa93e"
 }, {
   id: 2,
   title: "Voices from the South - Episode 1 Teaser",
@@ -31,7 +31,7 @@ const videos = [{
   viewNotes: "Part of acclaimed documentary series",
   category: "Teaser",
   duration: "1:45",
-  mpid: "7f15a134-5d4c-4edd-b4f8-117d0b4793a5"
+  mpid: "ee667f67-bd1f-4297-a530-526854f765bd"
 }, {
   id: 3,
   title: "The Memory Keeper - Behind the Scenes",
@@ -40,7 +40,7 @@ const videos = [{
   viewNotes: "IDFA Special Mention recipient",
   category: "Behind the Scenes",
   duration: "3:12",
-  mpid: "a1080579-cfa2-4b58-aac3-cb0ef6c4bcf7"
+  mpid: "f24f36dd-3206-4632-84b1-42161fd01637"
 }, {
   id: 4,
   title: "Between Two Worlds - Director's Commentary",
@@ -49,7 +49,7 @@ const videos = [{
   viewNotes: "Insights into the filmmaking process",
   category: "Commentary",
   duration: "4:28",
-  mpid: "68ccdc4d-f313-4ef8-9a91-46b3c3843114"
+  mpid: "23c6e7a1-4305-49a4-84a2-0057d627ccb2"
 }, {
   id: 5,
   title: "Songs of Exile - Music Video",
@@ -58,7 +58,7 @@ const videos = [{
   viewNotes: "Featured soundtrack from the documentary",
   category: "Music Video",
   duration: "3:45",
-  mpid: "b30e9006-c0d2-49a1-9dfc-3626d92aa2eb"
+  mpid: "b6366bfd-f222-481a-843a-ff128b2454d0"
 }, {
   id: 6,
   title: "Kinolatino Festival 2023 Highlights",
@@ -67,7 +67,7 @@ const videos = [{
   viewNotes: "Annual celebration of Latin American cinema",
   category: "Festival",
   duration: "5:20",
-  mpid: "db95ae64-048f-4553-8ce8-df9cfcc46ec0"
+  mpid: "cd6a9511-2697-40f7-a72a-ddb8139e63a6"
 }] as any[];
 export default function VideoGrid({}: VideoGridProps) {
   const [loadingStates, setLoadingStates] = useState<Record<number, boolean>>(videos.reduce((acc, video) => ({
@@ -140,14 +140,14 @@ export default function VideoGrid({}: VideoGridProps) {
                 
                 {/* Category Badge */}
                 <div className="absolute top-3 left-3" data-magicpath-id="14" data-magicpath-path="VideoGrid.tsx">
-                  <Badge className={cn("text-xs font-medium", getCategoryColor(video.category))} data-magicpath-uuid={(video as any)["mpid"] ?? "unsafe"} data-magicpath-field="category:string" data-magicpath-id="15" data-magicpath-path="VideoGrid.tsx">
+                  <Badge className={cn("text-xs font-medium", getCategoryColor(video.category))} data-magicpath-uuid={(video as any)["mpid"] ?? "unsafe"} data-magicpath-field="category:unknown" data-magicpath-id="15" data-magicpath-path="VideoGrid.tsx">
                     {video.category}
                   </Badge>
                 </div>
                 
                 {/* Duration Badge */}
                 <div className="absolute top-3 right-3" data-magicpath-id="16" data-magicpath-path="VideoGrid.tsx">
-                  <Badge variant="secondary" className="text-xs bg-black/70 text-white border-0" data-magicpath-uuid={(video as any)["mpid"] ?? "unsafe"} data-magicpath-field="duration:string" data-magicpath-id="17" data-magicpath-path="VideoGrid.tsx">
+                  <Badge variant="secondary" className="text-xs bg-black/70 text-white border-0" data-magicpath-uuid={(video as any)["mpid"] ?? "unsafe"} data-magicpath-field="duration:unknown" data-magicpath-id="17" data-magicpath-path="VideoGrid.tsx">
                     {video.duration}
                   </Badge>
                 </div>
@@ -155,13 +155,13 @@ export default function VideoGrid({}: VideoGridProps) {
             </CardHeader>
             
             <CardContent className="p-6" data-magicpath-id="18" data-magicpath-path="VideoGrid.tsx">
-              <CardTitle className="text-lg font-semibold mb-3 line-clamp-2 group-hover:text-primary transition-colors" data-magicpath-uuid={(video as any)["mpid"] ?? "unsafe"} data-magicpath-field="title:string" data-magicpath-id="19" data-magicpath-path="VideoGrid.tsx">
+              <CardTitle className="text-lg font-semibold mb-3 line-clamp-2 group-hover:text-primary transition-colors" data-magicpath-uuid={(video as any)["mpid"] ?? "unsafe"} data-magicpath-field="title:unknown" data-magicpath-id="19" data-magicpath-path="VideoGrid.tsx">
                 {video.title}
               </CardTitle>
               
               <div className="flex items-start gap-2 text-sm text-muted-foreground" data-magicpath-id="20" data-magicpath-path="VideoGrid.tsx">
                 <Eye className="h-4 w-4 mt-0.5 flex-shrink-0" data-magicpath-id="21" data-magicpath-path="VideoGrid.tsx" />
-                <p className="leading-relaxed" data-magicpath-uuid={(video as any)["mpid"] ?? "unsafe"} data-magicpath-field="viewNotes:string" data-magicpath-id="22" data-magicpath-path="VideoGrid.tsx">{video.viewNotes}</p>
+                <p className="leading-relaxed" data-magicpath-uuid={(video as any)["mpid"] ?? "unsafe"} data-magicpath-field="viewNotes:unknown" data-magicpath-id="22" data-magicpath-path="VideoGrid.tsx">{video.viewNotes}</p>
               </div>
               
               <div className="mt-4 flex items-center justify-between" data-magicpath-id="23" data-magicpath-path="VideoGrid.tsx">

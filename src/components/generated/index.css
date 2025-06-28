@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Roboto:wght@400;700;900&display=swap');
+@import 'tailwindcss';
+
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow: auto;
+  background: #000;
+  color: #fff;
+  font-family: 'Inter', 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: #000;
+  --foreground: #fff;
+  --card: #111;
+  --card-foreground: #fff;
+  --popover: #111;
+  --popover-foreground: #fff;
+  --primary: #fff;
+  --primary-foreground: #000;
+  --secondary: #222;
+  --secondary-foreground: #fff;
+  --muted: #222;
+  --muted-foreground: #bbb;
+  --accent: #fff;
+  --accent-foreground: #000;
+  --destructive: #e53e3e;
+  --border: #222;
+  --input: #222;
+  --ring: #fff;
+  --chart-1: #fff;
+  --chart-2: #bbb;
+  --chart-3: #444;
+  --chart-4: #222;
+  --chart-5: #fff;
+  --sidebar: #111;
+  --sidebar-foreground: #fff;
+  --sidebar-primary: #fff;
+  --sidebar-primary-foreground: #000;
+  --sidebar-accent: #fff;
+  --sidebar-accent-foreground: #000;
+  --sidebar-border: #222;
+  --sidebar-ring: #fff;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    font-family: 'Inter', 'Roboto', Arial, Helvetica, sans-serif;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', 'Roboto', Arial, Helvetica, sans-serif;
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* Bold geometric headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', 'Roboto', Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Buttons */
+button, .btn, .shadcn-btn, .shadcn-button {
+  font-family: 'Inter', 'Roboto', Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 0.5rem;
+  background: #fff;
+  color: #000;
+  transition: background 0.2s, color 0.2s;
+}
+button:hover, .btn:hover, .shadcn-btn:hover, .shadcn-button:hover {
+  background: #222;
+  color: #fff;
+}
+
+/* Film reel/camera gear background pattern */
+.cinebelgicano-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: repeating-radial-gradient(circle at 20% 40%, #222 0 2px, transparent 2px 40px),
+              repeating-radial-gradient(circle at 80% 60%, #222 0 2px, transparent 2px 40px),
+              linear-gradient(135deg, rgba(255,255,255,0.04) 0 50%, transparent 50% 100%);
+  opacity: 0.7;
+}
+
+.cinebelgicano-separator {
+  width: 100%;
+  height: 32px;
+  background: repeating-linear-gradient(90deg, #fff 0 4px, transparent 4px 24px);
+  opacity: 0.08;
+}
+
+.cinebelgicano-logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  display: block;
+}
+
+.cinebelgicano-logo-footer {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.cinebelgicano-header-fixed {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  z-index: 50;
+  background: rgba(0,0,0,0.85);
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.18);
+  transition: box-shadow 0.2s;
+}
+.cinebelgicano-header-fixed:hover {
+  box-shadow: 0 4px 32px 0 rgba(0,0,0,0.28);
+}
+
+@media (max-width: 640px) {
+  .cinebelgicano-header-fixed {
+    top: 0.5rem;
+    left: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.75rem;
+  }
+  .cinebelgicano-logo {
+    width: 40px;
+    height: 40px;
+  }
+  .cinebelgicano-logo-footer {
+    width: 32px;
+    height: 32px;
+  }
+}

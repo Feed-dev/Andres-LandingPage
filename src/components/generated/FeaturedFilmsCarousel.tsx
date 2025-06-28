@@ -25,7 +25,7 @@ const featuredFilms = [{
   highlights: ["Al-Jazeera Witness", "Brussels Film Festival Winner", "IDFA Selection"],
   poster: "https://images.unsplash.com/photo-1489599735734-79b4212bea40?w=400&h=600&fit=crop",
   trailerUrl: "https://youtube.com/watch?v=example1",
-  mpid: "9240e88e-2efc-4a69-a243-ddc4e23b49bb"
+  mpid: "7744a64d-c591-4697-aaed-5c92e35dad43"
 }, {
   id: 2,
   title: "Voices from the South",
@@ -35,7 +35,7 @@ const featuredFilms = [{
   highlights: ["Kinolatino Audience Choice", "VAF Supported", "International Distribution"],
   poster: "https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=400&h=600&fit=crop",
   trailerUrl: "https://youtube.com/watch?v=example2",
-  mpid: "263c2e89-92e1-440a-a2db-84bdde915317"
+  mpid: "e2c496d0-819d-4769-bcdc-aa9367ba842d"
 }, {
   id: 3,
   title: "The Memory Keeper",
@@ -45,7 +45,7 @@ const featuredFilms = [{
   highlights: ["IDFA Special Mention", "Festival Circuit", "Critical Acclaim"],
   poster: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop",
   trailerUrl: "https://youtube.com/watch?v=example3",
-  mpid: "4db91ca1-fceb-48cf-a1b4-74390e5438ee"
+  mpid: "b175c0e4-dc39-4534-b45c-3279d6eb44de"
 }, {
   id: 4,
   title: "Between Two Worlds",
@@ -55,7 +55,7 @@ const featuredFilms = [{
   highlights: ["Latin Film Festival Best Director", "Off World Production", "Streaming Release"],
   poster: "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&h=600&fit=crop",
   trailerUrl: "https://youtube.com/watch?v=example4",
-  mpid: "2349fffe-109f-447b-bd95-cf70426abcf5"
+  mpid: "9a708831-ae2a-4705-9ec9-8baa7123eede"
 }, {
   id: 5,
   title: "Songs of Exile",
@@ -65,7 +65,7 @@ const featuredFilms = [{
   highlights: ["Music Film Festival", "Soundtrack Release", "Cultural Impact Award"],
   poster: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=600&fit=crop",
   trailerUrl: "https://youtube.com/watch?v=example5",
-  mpid: "38e02dc9-f156-47bf-a886-cbfe82420706"
+  mpid: "69607bbd-4bd1-4bdf-ac40-1809b4704477"
 }, {
   id: 6,
   title: "New Horizons",
@@ -75,7 +75,7 @@ const featuredFilms = [{
   highlights: ["Business Film Award", "Educational Distribution", "Impact Campaign"],
   poster: "https://images.unsplash.com/photo-1542204165-65bf26472b9b?w=400&h=600&fit=crop",
   trailerUrl: "https://youtube.com/watch?v=example6",
-  mpid: "e6809a78-e8de-4d39-b9b3-f67c927cdfb5"
+  mpid: "4243d082-a5ad-455f-812a-25ef0ae64cfc"
 }] as any[];
 export default function FeaturedFilmsCarousel({}: FeaturedFilmsCarouselProps) {
   const [imageErrors, setImageErrors] = useState<Record<number, boolean>>({});
@@ -141,7 +141,7 @@ export default function FeaturedFilmsCarousel({}: FeaturedFilmsCarouselProps) {
         }} data-magicpath-id="19" data-magicpath-path="FeaturedFilmsCarousel.tsx">
               <Card className="w-80 flex-shrink-0 hover:shadow-lg transition-all duration-300 group cursor-pointer" data-magicpath-id="20" data-magicpath-path="FeaturedFilmsCarousel.tsx">
                 <CardHeader className="p-0 relative overflow-hidden" data-magicpath-id="21" data-magicpath-path="FeaturedFilmsCarousel.tsx">
-                  {!imageErrors[film.id] ? <img src={film.poster} alt={`Movie poster for ${film.title}`} className="w-full h-48 object-cover rounded-t-lg group-hover:scale-105 transition-transform duration-300" onError={() => handleImageError(film.id)} data-magicpath-uuid={(film as any)["mpid"] ?? "unsafe"} data-magicpath-field="poster:string" data-magicpath-id="22" data-magicpath-path="FeaturedFilmsCarousel.tsx" /> : <div className="w-full h-48 bg-muted flex items-center justify-center rounded-t-lg" data-magicpath-id="23" data-magicpath-path="FeaturedFilmsCarousel.tsx">
+                  {!imageErrors[film.id] ? <img src={film.poster} alt={`Movie poster for ${film.title}`} className="w-full h-48 object-cover rounded-t-lg group-hover:scale-105 transition-transform duration-300" onError={() => handleImageError(film.id)} data-magicpath-uuid={(film as any)["mpid"] ?? "unsafe"} data-magicpath-field="poster:unknown" data-magicpath-id="22" data-magicpath-path="FeaturedFilmsCarousel.tsx" /> : <div className="w-full h-48 bg-muted flex items-center justify-center rounded-t-lg" data-magicpath-id="23" data-magicpath-path="FeaturedFilmsCarousel.tsx">
                       <Film className="h-12 w-12 text-muted-foreground" data-magicpath-id="24" data-magicpath-path="FeaturedFilmsCarousel.tsx" />
                     </div>}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100" data-magicpath-id="25" data-magicpath-path="FeaturedFilmsCarousel.tsx">
@@ -154,18 +154,18 @@ export default function FeaturedFilmsCarousel({}: FeaturedFilmsCarouselProps) {
                 
                 <CardContent className="p-6" data-magicpath-id="28" data-magicpath-path="FeaturedFilmsCarousel.tsx">
                   <div className="flex items-center justify-between mb-2" data-magicpath-id="29" data-magicpath-path="FeaturedFilmsCarousel.tsx">
-                    <CardTitle className="text-lg font-bold" data-magicpath-uuid={(film as any)["mpid"] ?? "unsafe"} data-magicpath-field="title:string" data-magicpath-id="30" data-magicpath-path="FeaturedFilmsCarousel.tsx">{film.title}</CardTitle>
+                    <CardTitle className="text-lg font-bold" data-magicpath-uuid={(film as any)["mpid"] ?? "unsafe"} data-magicpath-field="title:unknown" data-magicpath-id="30" data-magicpath-path="FeaturedFilmsCarousel.tsx">{film.title}</CardTitle>
                     <div className="flex items-center gap-1 text-sm text-muted-foreground" data-magicpath-id="31" data-magicpath-path="FeaturedFilmsCarousel.tsx">
                       <Calendar className="h-3 w-3" data-magicpath-id="32" data-magicpath-path="FeaturedFilmsCarousel.tsx" />
-                      <span data-magicpath-uuid={(film as any)["mpid"] ?? "unsafe"} data-magicpath-field="year:number" data-magicpath-id="33" data-magicpath-path="FeaturedFilmsCarousel.tsx">{film.year}</span>
+                      <span data-magicpath-uuid={(film as any)["mpid"] ?? "unsafe"} data-magicpath-field="year:unknown" data-magicpath-id="33" data-magicpath-path="FeaturedFilmsCarousel.tsx">{film.year}</span>
                     </div>
                   </div>
                   
-                  <Badge variant="secondary" className="mb-4" data-magicpath-uuid={(film as any)["mpid"] ?? "unsafe"} data-magicpath-field="format:string" data-magicpath-id="34" data-magicpath-path="FeaturedFilmsCarousel.tsx">
+                  <Badge variant="secondary" className="mb-4" data-magicpath-uuid={(film as any)["mpid"] ?? "unsafe"} data-magicpath-field="format:unknown" data-magicpath-id="34" data-magicpath-path="FeaturedFilmsCarousel.tsx">
                     {film.format}
                   </Badge>
                   
-                  <p className="text-sm text-muted-foreground mb-4 line-clamp-3 leading-relaxed" data-magicpath-uuid={(film as any)["mpid"] ?? "unsafe"} data-magicpath-field="logline:string" data-magicpath-id="35" data-magicpath-path="FeaturedFilmsCarousel.tsx">
+                  <p className="text-sm text-muted-foreground mb-4 line-clamp-3 leading-relaxed" data-magicpath-uuid={(film as any)["mpid"] ?? "unsafe"} data-magicpath-field="logline:unknown" data-magicpath-id="35" data-magicpath-path="FeaturedFilmsCarousel.tsx">
                     {film.logline}
                   </p>
                   
