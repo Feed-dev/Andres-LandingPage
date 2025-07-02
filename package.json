@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@eslint/js": "^9.21.0",
@@ -78,6 +79,7 @@
     "zod": "^3.24.2"
   },
   "devDependencies": {
-    "prettier": "3.5.3"
+    "prettier": "3.5.3",
+    "gh-pages": "^6.1.1"
   }
 }
