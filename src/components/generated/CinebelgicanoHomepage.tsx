@@ -187,7 +187,7 @@ export default function CinebelgicanoHomepage({}: CinebelgicanoHomepageProps) {
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img src="https://storage.googleapis.com/storage.magicpath.ai/user/282430617021460480/assets/f7cee12c-5a27-430e-a3e8-a6bb4bda1568.jpg?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=api-storage%40magicpath.iam.gserviceaccount.com%2F20250628%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20250628T174126Z&X-Goog-Expires=3600&X-Goog-SignedHeaders=host&X-Goog-Signature=5d6ccd1c2d1282cb99f6605e0a7c0cba7dca95d2c9dc6f418751463668bf2383aed84f93c40584dca0b46ead5df9fd973ba0d2b6689a2a9da2be3f3ddc7c6aee27553764759fba781fb94e2091bf8ea1c45544a771244f1456152a7c3d23be9c4dc5440d5a78c400a372766d11d0449dd37b31d5215a75b36b75bb0f2608498052def4411601b22e538bfe8ded9b87f896dc0dda2b0eed4017da19a83f43f8b8c479e784a2f0e27e6934385b57e1f80482e202e32eaafcc2a61ca45747b7de5957802fe8eb3bee71868e6e43ecea59427f4325ada3d6ed85a61dd524e7efefcda64ff707c96342d87fc1c34cf9b7597d4b78207feecfc8ad525a04c9bbb2b378" alt="Cinebelgicano Productions logo" className="w-10 h-10 object-contain" />
+            <img src="./logo.jpg" alt="Cinebelgicano Productions logo" className="w-10 h-10 object-contain" />
             <div>
               <h1 className="text-lg font-bold text-gray-900">{productionCompany.name}</h1>
               <p className="text-xs text-gray-600">Professional Film Production</p>
