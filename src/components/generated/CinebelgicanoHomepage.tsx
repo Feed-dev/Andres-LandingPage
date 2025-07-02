@@ -221,7 +221,7 @@ export default function CinebelgicanoHomepage({}: CinebelgicanoHomepageProps) {
             duration: 0.8
           }} className="relative">
               <div className="relative">
-                <img src="https://storage.googleapis.com/storage.magicpath.ai/user/282430617021460480/assets/53644478-cb75-4854-b180-b984cde5cf44.jpg?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=api-storage%40magicpath.iam.gserviceaccount.com%2F20250628%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20250628T173932Z&X-Goog-Expires=3600&X-Goog-SignedHeaders=host&X-Goog-Signature=5d9aa9af3e43425b61a0d354919e11f6be1f73287bee2672db6c826c0caf712f9e0c2e6633e2a9c33fcbe95e072bed68b462632eae81fb64cce61a7176eb3c2850524586a2d53964a1ba2eeecff74b2b1410412557b537fbd03c94a746a28b511f721ea520e2cf2323f9fe3e5e08347bd4b9d6342e4c8e1ad6b7f3eb7e031a18a5aad0e1e00cb3f34ccbdb881841158877d61578f58e19cb1ce324062eccecd140e1f9866fde5f25c1b7ab217c16e280908b74cb9f751257eef940f063906582d79196a091f9b065cceb5bd3b48d42c0aa00e720dc52cffd2adf97609f03ddeac14f6869e9c09487dea03cff3991db9bb89e179564acc61a46a24dd9f1d154bf" alt={`Professional portrait of ${directorData.name}`} className="w-full max-w-md mx-auto rounded-2xl shadow-2xl object-cover aspect-[3/4]" />
+                <img src="/portrait.jpg" alt={`Professional portrait of ${directorData.name}`} className="w-full max-w-md mx-auto rounded-2xl shadow-2xl object-cover aspect-[3/4]" />
                 <div className="absolute -bottom-6 -right-6 bg-white rounded-xl p-4 shadow-lg border">
                   <div className="flex items-center gap-2">
                     <Award className="h-5 w-5 text-yellow-600" />

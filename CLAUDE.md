@@ -63,13 +63,19 @@ Theme management is handled in `src/settings/theme.ts` with support for:
 The project is configured for deployment to GitHub Pages at: `https://feed-dev.github.io/Andres-LandingPage/`
 
 ### Automated Deployment
-- GitHub Actions workflow (`.github/workflows/deploy.yml`) automatically deploys on pushes to `master` branch
+- GitHub Actions workflow (`.github/workflows/deploy.yml`) automatically deploys on pushes to `main` branch
 - Requires GitHub Pages to be enabled in repository settings with source set to "GitHub Actions"
+- SSH keys are configured for seamless Git operations
 
 ### Manual Deployment
 1. Install dependencies: `yarn install`
 2. Build the project: `yarn build`
-3. Deploy to GitHub Pages: `yarn deploy`
+3. Deploy to GitHub Pages: `yarn deploy` (requires `gh-pages` package)
+
+### Git Operations
+- Repository uses SSH authentication for secure operations
+- Default branch is `main`
+- To push changes: `git add . && git commit -m "message" && git push origin main`
 
 ### Configuration
 - Vite base path is set to `/Andres-LandingPage/` in `vite.config.ts` for proper GitHub Pages routing
