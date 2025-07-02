@@ -9,9 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Badge } from "@/components/ui/badge";
-export interface VideoGridProps {
-  mpid?: string;
-}
+export interface VideoGridProps {}
 
 // Mock data for video gallery
 const videos = [{
@@ -21,8 +19,7 @@ const videos = [{
   // Using a real YouTube ID for demo
   viewNotes: "Winner of Brussels Film Festival 2023",
   category: "Trailer",
-  duration: "2:34",
-  mpid: "88dadf0d-cde1-4503-9dba-81d009afeca7"
+  duration: "2:34"
 }, {
   id: 2,
   title: "Voices from the South - Episode 1 Teaser",
@@ -30,8 +27,7 @@ const videos = [{
   // Using a real YouTube ID for demo
   viewNotes: "Part of acclaimed documentary series",
   category: "Teaser",
-  duration: "1:45",
-  mpid: "ac9441be-02b7-40d8-a9fc-539a668e6c85"
+  duration: "1:45"
 }, {
   id: 3,
   title: "The Memory Keeper - Behind the Scenes",
@@ -39,8 +35,7 @@ const videos = [{
   // Using a real YouTube ID for demo
   viewNotes: "IDFA Special Mention recipient",
   category: "Behind the Scenes",
-  duration: "3:12",
-  mpid: "648a2ba4-0cc1-4288-8191-bab580c6b60e"
+  duration: "3:12"
 }, {
   id: 4,
   title: "Between Two Worlds - Director's Commentary",
@@ -48,8 +43,7 @@ const videos = [{
   // Using a real YouTube ID for demo
   viewNotes: "Insights into the filmmaking process",
   category: "Commentary",
-  duration: "4:28",
-  mpid: "f1f6a3cc-c2aa-47bc-9e5f-01affbcdde46"
+  duration: "4:28"
 }, {
   id: 5,
   title: "Songs of Exile - Music Video",
@@ -57,8 +51,7 @@ const videos = [{
   // Using a real YouTube ID for demo
   viewNotes: "Featured soundtrack from the documentary",
   category: "Music Video",
-  duration: "3:45",
-  mpid: "633fc6eb-e6f8-450f-bbfc-ebd57f87ba8d"
+  duration: "3:45"
 }, {
   id: 6,
   title: "Kinolatino Festival 2023 Highlights",
@@ -66,8 +59,7 @@ const videos = [{
   // Using a real YouTube ID for demo
   viewNotes: "Annual celebration of Latin American cinema",
   category: "Festival",
-  duration: "5:20",
-  mpid: "e9f7e3f1-efbc-4620-88a3-ec73773535a5"
+  duration: "5:20"
 }] as any[];
 export default function VideoGrid({}: VideoGridProps) {
   const [loadingStates, setLoadingStates] = useState<Record<number, boolean>>(videos.reduce((acc, video) => ({
@@ -110,12 +102,12 @@ export default function VideoGrid({}: VideoGridProps) {
     }
   };
   if (videos.length === 0) {
-    return <div className="text-center py-12" data-magicpath-id="0" data-magicpath-path="VideoGrid.tsx">
-        <Youtube className="h-12 w-12 mx-auto text-muted-foreground mb-4" data-magicpath-id="1" data-magicpath-path="VideoGrid.tsx" />
-        <p className="text-muted-foreground" data-magicpath-id="2" data-magicpath-path="VideoGrid.tsx">No videos available at the moment.</p>
+    return <div className="text-center py-12">
+        <Youtube className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
+        <p className="text-muted-foreground">No videos available at the moment.</p>
       </div>;
   }
-  return <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" data-magicpath-id="3" data-magicpath-path="VideoGrid.tsx">
+  return <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       {videos.map((video, index) => <motion.div key={video.id} initial={{
       opacity: 0,
       y: 50
@@ -125,63 +117,63 @@ export default function VideoGrid({}: VideoGridProps) {
     }} transition={{
       duration: 0.5,
       delay: index * 0.1
-    }} data-magicpath-id="4" data-magicpath-path="VideoGrid.tsx">
-          <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 group" data-magicpath-id="5" data-magicpath-path="VideoGrid.tsx">
-            <CardHeader className="p-0 relative" data-magicpath-id="6" data-magicpath-path="VideoGrid.tsx">
-              <div className="relative aspect-video bg-muted" data-magicpath-id="7" data-magicpath-path="VideoGrid.tsx">
-                {loadingStates[video.id] && <div className="absolute inset-0 flex items-center justify-center" data-magicpath-id="8" data-magicpath-path="VideoGrid.tsx">
-                    <Skeleton className="w-full h-full" data-magicpath-id="9" data-magicpath-path="VideoGrid.tsx" />
+    }}>
+          <Card className="overflow-hidden hover:shadow-lg transition-all duration-300 group">
+            <CardHeader className="p-0 relative">
+              <div className="relative aspect-video bg-muted">
+                {loadingStates[video.id] && <div className="absolute inset-0 flex items-center justify-center">
+                    <Skeleton className="w-full h-full" />
                   </div>}
                 
-                {errorStates[video.id] ? <div className="absolute inset-0 flex flex-col items-center justify-center bg-muted" data-magicpath-id="10" data-magicpath-path="VideoGrid.tsx">
-                    <AlertTriangle className="h-8 w-8 text-muted-foreground mb-2" data-magicpath-id="11" data-magicpath-path="VideoGrid.tsx" />
-                    <p className="text-sm text-muted-foreground" data-magicpath-id="12" data-magicpath-path="VideoGrid.tsx">Failed to load video</p>
-                  </div> : <iframe src={`https://www.youtube.com/embed/${video.youtubeId}?rel=0&modestbranding=1`} title={video.title} aria-label={`Video: ${video.title}`} className={cn("w-full h-full border-0", loadingStates[video.id] ? "opacity-0" : "opacity-100")} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen onLoad={() => handleVideoLoad(video.id)} onError={() => handleVideoError(video.id)} data-magicpath-id="13" data-magicpath-path="VideoGrid.tsx" />}
+                {errorStates[video.id] ? <div className="absolute inset-0 flex flex-col items-center justify-center bg-muted">
+                    <AlertTriangle className="h-8 w-8 text-muted-foreground mb-2" />
+                    <p className="text-sm text-muted-foreground">Failed to load video</p>
+                  </div> : <iframe src={`https://www.youtube.com/embed/${video.youtubeId}?rel=0&modestbranding=1`} title={video.title} aria-label={`Video: ${video.title}`} className={cn("w-full h-full border-0", loadingStates[video.id] ? "opacity-0" : "opacity-100")} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen onLoad={() => handleVideoLoad(video.id)} onError={() => handleVideoError(video.id)} />}
                 
                 {/* Category Badge */}
-                <div className="absolute top-3 left-3" data-magicpath-id="14" data-magicpath-path="VideoGrid.tsx">
-                  <Badge className={cn("text-xs font-medium", getCategoryColor(video.category))} data-magicpath-uuid={(video as any)["mpid"] ?? "unsafe"} data-magicpath-field="category:unknown" data-magicpath-id="15" data-magicpath-path="VideoGrid.tsx">
+                <div className="absolute top-3 left-3">
+                  <Badge className={cn("text-xs font-medium", getCategoryColor(video.category))}>
                     {video.category}
                   </Badge>
                 </div>
                 
                 {/* Duration Badge */}
-                <div className="absolute top-3 right-3" data-magicpath-id="16" data-magicpath-path="VideoGrid.tsx">
-                  <Badge variant="secondary" className="text-xs bg-black/70 text-white border-0" data-magicpath-uuid={(video as any)["mpid"] ?? "unsafe"} data-magicpath-field="duration:unknown" data-magicpath-id="17" data-magicpath-path="VideoGrid.tsx">
+                <div className="absolute top-3 right-3">
+                  <Badge variant="secondary" className="text-xs bg-black/70 text-white border-0">
                     {video.duration}
                   </Badge>
                 </div>
               </div>
             </CardHeader>
             
-            <CardContent className="p-6" data-magicpath-id="18" data-magicpath-path="VideoGrid.tsx">
-              <CardTitle className="text-lg font-semibold mb-3 line-clamp-2 group-hover:text-primary transition-colors" data-magicpath-uuid={(video as any)["mpid"] ?? "unsafe"} data-magicpath-field="title:unknown" data-magicpath-id="19" data-magicpath-path="VideoGrid.tsx">
+            <CardContent className="p-6">
+              <CardTitle className="text-lg font-semibold mb-3 line-clamp-2 group-hover:text-primary transition-colors">
                 {video.title}
               </CardTitle>
               
-              <div className="flex items-start gap-2 text-sm text-muted-foreground" data-magicpath-id="20" data-magicpath-path="VideoGrid.tsx">
-                <Eye className="h-4 w-4 mt-0.5 flex-shrink-0" data-magicpath-id="21" data-magicpath-path="VideoGrid.tsx" />
-                <p className="leading-relaxed" data-magicpath-uuid={(video as any)["mpid"] ?? "unsafe"} data-magicpath-field="viewNotes:unknown" data-magicpath-id="22" data-magicpath-path="VideoGrid.tsx">{video.viewNotes}</p>
+              <div className="flex items-start gap-2 text-sm text-muted-foreground">
+                <Eye className="h-4 w-4 mt-0.5 flex-shrink-0" />
+                <p className="leading-relaxed">{video.viewNotes}</p>
               </div>
               
-              <div className="mt-4 flex items-center justify-between" data-magicpath-id="23" data-magicpath-path="VideoGrid.tsx">
-                <TooltipProvider data-magicpath-id="24" data-magicpath-path="VideoGrid.tsx">
-                  <Tooltip data-magicpath-id="25" data-magicpath-path="VideoGrid.tsx">
-                    <TooltipTrigger asChild data-magicpath-id="26" data-magicpath-path="VideoGrid.tsx">
-                      <div className="flex items-center gap-1 text-xs text-muted-foreground" data-magicpath-id="27" data-magicpath-path="VideoGrid.tsx">
-                        <Youtube className="h-3 w-3" data-magicpath-id="28" data-magicpath-path="VideoGrid.tsx" />
-                        <span data-magicpath-id="29" data-magicpath-path="VideoGrid.tsx">YouTube</span>
+              <div className="mt-4 flex items-center justify-between">
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                        <Youtube className="h-3 w-3" />
+                        <span>YouTube</span>
                       </div>
                     </TooltipTrigger>
-                    <TooltipContent data-magicpath-id="30" data-magicpath-path="VideoGrid.tsx">
-                      <p data-magicpath-id="31" data-magicpath-path="VideoGrid.tsx">Watch on YouTube</p>
+                    <TooltipContent>
+                      <p>Watch on YouTube</p>
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
                 
-                <div className="flex items-center gap-1 text-xs text-muted-foreground" data-magicpath-id="32" data-magicpath-path="VideoGrid.tsx">
-                  <Play className="h-3 w-3" data-magicpath-id="33" data-magicpath-path="VideoGrid.tsx" />
-                  <span data-magicpath-id="34" data-magicpath-path="VideoGrid.tsx">Click to play</span>
+                <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                  <Play className="h-3 w-3" />
+                  <span>Click to play</span>
                 </div>
               </div>
             </CardContent>
