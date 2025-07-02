@@ -221,7 +221,7 @@ export default function CinebelgicanoHomepage({}: CinebelgicanoHomepageProps) {
             duration: 0.8
           }} className="relative">
               <div className="relative">
-                <img src="/portrait.jpg" alt={`Professional portrait of ${directorData.name}`} className="w-full max-w-md mx-auto rounded-2xl shadow-2xl object-cover aspect-[3/4]" />
+                <img src="./portrait.jpg" alt={`Professional portrait of ${directorData.name}`} className="w-full max-w-md mx-auto rounded-2xl shadow-2xl object-cover aspect-[3/4]" />
                 <div className="absolute -bottom-6 -right-6 bg-white rounded-xl p-4 shadow-lg border">
                   <div className="flex items-center gap-2">
                     <Award className="h-5 w-5 text-yellow-600" />
